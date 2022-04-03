@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_145023) do
+ActiveRecord::Schema.define(version: 2022_04_03_131436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(version: 2022_04_02_145023) do
     t.json "prices"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "exchange"
+    t.string "asset_type"
     t.index ["cik"], name: "index_companies_on_cik", unique: true
-    t.index ["name"], name: "index_companies_on_name", unique: true
     t.index ["ticker"], name: "index_companies_on_ticker", unique: true
   end
 
