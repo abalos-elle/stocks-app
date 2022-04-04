@@ -1,4 +1,4 @@
-%h2 Companies
+%h2 Top and Bottom Companies
 
 %table
     %thead
@@ -12,5 +12,5 @@
             %tr
                 %td= cmp.name
                 %td= cmp.ticker    
-                %td= 300 #PriceService.fetch_quote(cmp.ticker).output["Global Quote"]["05. price"]
-                %td= "10%" #PriceService.fetch_quote(cmp.ticker).output["Global Quote"]["10. change percent"]
+                %td= cmp.latest_price
+                %td= cmp.previous_close
