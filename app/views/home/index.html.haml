@@ -1,16 +1,16 @@
-%h2 Top and Bottom Companies
+%h2 Stock Trends 
 
-%table
+%table{ class: %w[table table-primary table-striped] }
     %thead
-        %tr
+        %tr{ class: %w[table-primary]}
             %th Name
             %th Symbol
             %th Price
             %th Percent Change
     %tbody
         - @companies.each do |cmp|
-            %tr
-                %td= cmp.name
-                %td= cmp.ticker    
-                %td= cmp.latest_price
-                %td= cmp.previous_close
+            %tr{ class: %w[table-primary]}
+                %td{ class: %w[table-primary]}= cmp.name
+                %td{ class: %w[table-primary]}= cmp.ticker    
+                %td{ class: %w[table-primary]}= cmp.latest_price
+                %td{ class: %w[table-primary]}= number_to_percent(cmp.get_change_percent)
