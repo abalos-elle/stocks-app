@@ -25,6 +25,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 # Add OmniAuth for multiple-provider authentication
 gem 'omniauth', '~> 2.0', '>= 2.0.4'
+# Add gem to autoload dotenv files
+gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
+# Add mailgun gem
+gem 'mailgun-ruby', '~> 1.2', '>= 1.2.5'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
