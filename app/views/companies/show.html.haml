@@ -1,0 +1,19 @@
+%h2= @company.name
+
+%br
+%h6= @company.ticker    
+%h2= 300 #PriceService.fetch_quote(@company.ticker).output["Global Quote"]["05. price"]
+%h6= "10%" #PriceService.fetch_quote(@company.ticker).output["Global Quote"]["10. change percent"]
+%br
+
+%p
+  Stock Exchange: 
+  %span= @company.exchange
+
+%p
+  Asset Type:  
+  %span= @company.asset_type
+
+%br
+
+= link_to 'Go back to Home page', companies_path
