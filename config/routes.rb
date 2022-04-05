@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # Set homepage
+  root "companies#index"
+  
+  # Devise routes
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
