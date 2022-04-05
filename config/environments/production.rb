@@ -120,4 +120,15 @@ Rails.application.configure do
 
   # Set default URL options for Devise mailer in each environment
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Include mailgun configuration for deployment
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port: 587,
+    address: 'smtp.mailgun.org',
+    domain: ENV['DOMAIN_NAME'],
+    user_name: ENV['SMTP_USER_NAME'],
+    password: ENV['SMTP_PASSWORD'],
+    authentication: :plain
+  }
 end
