@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_182436) do
+ActiveRecord::Schema.define(version: 2022_04_04_124910)
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_182436) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "exchange"
     t.string "asset_type"
+    t.decimal "latest_price", precision: 15, scale: 4
+    t.decimal "previous_close", precision: 15, scale: 4
     t.index ["cik"], name: "index_companies_on_cik", unique: true
     t.index ["ticker"], name: "index_companies_on_ticker", unique: true
   end

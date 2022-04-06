@@ -6,13 +6,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%# If error occurs on line 13 after cloning run the following: %>
-    <%# Run rails webpacker:install %>
-    <%# Run rails webpacker:compile %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>   
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <header>
     <%= render 'layouts/header' %>
   </header>
@@ -23,6 +20,6 @@
     <main>
       <%= render 'layouts/alerts' %>
       <%= yield %>
-    </main
+    </main>
   </body>
 </html>
