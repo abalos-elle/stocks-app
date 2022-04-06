@@ -13,5 +13,31 @@
  *= require_tree .
  *= require_self
  */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import './home.scss';
 
- @import 'bootstrap/dist/css/bootstrap.min.css';
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.navigation-menu{
+  height: calc(100% - 40px);
+  width: 10vw;
+  max-width: 400px;
+  margin-top: 40px;
+  padding-bottom: 1rem;    
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+
+.main-page {
+  width: 100%;
+  height: calc(100% - 40px);
+  margin-top: 40px;
+}
+
+ 
