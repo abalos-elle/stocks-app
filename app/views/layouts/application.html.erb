@@ -10,12 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <div class="container>"
-    <body class="row">
+  <div class="container">
+    <body class="row mt-5 mb-1">
       <% if user_signed_in? %>
-        <navbar class="col=3">
+        <nav class="col-3">
           <%= render 'layouts/navbar' %>
-        </navbar>
+        </nav>
       <% end %>
       <main class="col-9">
         <%= render 'layouts/alerts' %>
