@@ -10,16 +10,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
-    <%= render 'layouts/header' %>
-  </header>
-  <body>
-    <navbar>
-      <%= render 'layouts/navbar' %>
-    </navbar>
-    <main>
-      <%= render 'layouts/alerts' %>
-      <%= yield %>
-    </main>
-  </body>
+  <div class="container>"
+    <body class="row">
+      <navbar class="col=3">
+        <%= render 'layouts/navbar' %>
+      </navbar>
+      <main class="col-9">
+        <%= render 'layouts/alerts' %>
+        <%= yield %>
+      </main>
+    </body>
+  </div>
 </html>
