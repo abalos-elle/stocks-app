@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StocksApp</title>
+    <title>Stocks App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>   
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header>
+    <%= render 'layouts/header' %>
+  </header>
   <body>
-    <div class="container">
-        <nav class="nav navigation-menu">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-          </ul>
-        </nav>  
-        <div class="main-page">
-            <%= yield %>
-        </div>    
-    </div>
+    <navbar>
+      <%= render 'layouts/navbar' %>
+    </navbar>
+    <main>
+      <%= render 'layouts/alerts' %>
+      <%= yield %>
+    </main>
   </body>
 </html>
