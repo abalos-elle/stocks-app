@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StocksApp</title>
+    <title>Stocks App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,9 +11,19 @@
     <%# Run rails webpacker:install %>
     <%# Run rails webpacker:compile %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <%= render 'layouts/header' %>
+  </header>
   <body>
-    <%= yield %>
+    <navbar>
+      <%= render 'layouts/navbar' %>
+    </navbar>
+    <main>
+      <%= render 'layouts/alerts' %>
+      <%= yield %>
+    </main
   </body>
 </html>
