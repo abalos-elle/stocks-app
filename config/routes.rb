@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   # Set homepage
-  root "companies#index"
+  root "home#index"
   
   # Devise routes
   devise_for :users, controllers: {
