@@ -4,11 +4,17 @@ class Company < ApplicationRecord
     validates :ticker, presence: true, uniqueness: true
 
     def get_change
-        self.latest_price-self.previous_close
+        (self.latest_price.nil? ? 0 : self.latest_price ) - 
+            (self.previous_close.nil? ? 0 : self.previous_close)
     end
 
     def get_change_percent
-        get_change/self.previous_close*100
+        if self.previous_close.nil? 
+            0
+        else
+            get_change/self.previous_close*100
+        end
+        
     end
 
     def get_top_5
