@@ -6,23 +6,27 @@
       <th>Name</th>
       <th>Symbol</th>
       <th>Price</th>
-      <th>Percent Change</th>
+      <th>Date Bought</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
-    <% @owned_stocks.each do |cmp| %>
+    <% @owned_stocks.each do |stock| %>
       <tr>
         <td class="table-primary">
-          <%= cmp.user_id %>
+          <%= stock.company.name %>
         </td>
         <td class="table-primary">
-          <%= cmp.company_id     %>
+          <%= stock.company.ticker     %>
         </td>
         <td class="table-primary">
-          <%= cmp.price %>
+          <%= number_to_currency_p(stock.price) %>
         </td>
         <td class="table-primary">
-          <%= cmp.buy_date %>
+          <%= stock.buy_date.strftime("%F") %>
+        </td>
+        <td class="table-primary">
+          <%= link_to "Sell", user_owned_stock_sell_path(:user_id => stock.user.id , :owned_stock_id => stock.id) %>
         </td>
       </tr>
     <% end %>

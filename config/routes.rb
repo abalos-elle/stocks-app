@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :home
   resources :owned_stocks
   resources :users do
-    resources :owned_stocks
+    resources :owned_stocks do
+      get :sell
+    end
   end
+
 end
