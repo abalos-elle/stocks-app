@@ -29,6 +29,9 @@ gem 'omniauth', '~> 2.0', '>= 2.0.4'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 # Add mailgun gem
 gem 'mailgun-ruby', '~> 1.2', '>= 1.2.5'
+# Add gem to manage multiple roles
+gem 'petergate', '~> 3.0'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -67,3 +70,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'alphavantagerb'
 gem "haml"
 gem "httparty"
+gem 'ransack'

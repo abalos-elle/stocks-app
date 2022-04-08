@@ -29,8 +29,35 @@ ActiveRecord::Schema.define(version: 2022_04_07_103342) do
     t.json "pe_ratio"
     t.json "eps"
     t.json "ex_dividend_date"
+    t.decimal "latest_price", precision: 15, scale: 4
+    t.decimal "previous_close", precision: 15, scale: 4
     t.index ["cik"], name: "index_companies_on_cik", unique: true
     t.index ["ticker"], name: "index_companies_on_ticker", unique: true
+  end
+
+  create_table "owned_stocks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "company_id", null: false
+    t.decimal "quantity"
+    t.decimal "price", precision: 5, scale: 2
+    t.datetime "buy_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_owned_stocks_on_company_id"
+    t.index ["user_id"], name: "index_owned_stocks_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "code"
+    t.decimal "type"
+    t.bigint "user_id", null: false
+    t.bigint "company_id", null: false
+    t.decimal "quantity"
+    t.decimal "price", precision: 5, scale: 4
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_transactions_on_company_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,9 +77,15 @@ ActiveRecord::Schema.define(version: 2022_04_07_103342) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "roles"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["mobile"], name: "index_users_on_mobile", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "owned_stocks", "companies"
+  add_foreign_key "owned_stocks", "users"
+  add_foreign_key "transactions", "companies"
+  add_foreign_key "transactions", "users"
 end

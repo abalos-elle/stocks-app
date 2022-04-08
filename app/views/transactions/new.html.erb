@@ -1,0 +1,11 @@
+<%# <h1>
+    Company : <%= @owned_stock.company.name %> 
+<%# </h1> 
+<h1>
+    Qty. Owned : <%= @owned_stock.quantity %>
+<%# </h1> %>
+
+<%= form_with model: @transaction do |form| %>
+    <%=form.text_field :quantity %>
+    <%= form.submit %>
+<% end %>  
