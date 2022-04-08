@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'home/index'
-
   # Set homepage
   root "home#index"
   
@@ -16,9 +14,11 @@ Rails.application.routes.draw do
   resources :companies
   resources :home
   resources :owned_stocks
+  resources :transactions do
+    post :sell
+  end
   resources :users do
-    resources :owned_stocks do
-      get :sell
+    resources :owned_stocks do     
     end
   end
 
