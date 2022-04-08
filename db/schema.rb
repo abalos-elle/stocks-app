@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_141534) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "roles"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["mobile"], name: "index_users_on_mobile", unique: true
