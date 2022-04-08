@@ -70,3 +70,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'alphavantagerb'
 gem "haml"
 gem "httparty"
+gem 'ransack'
