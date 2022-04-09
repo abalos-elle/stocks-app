@@ -1,11 +1,13 @@
-<%# <h1>
-    Company : <%= @owned_stock.company.name %> 
-<%# </h1> 
-<h1>
-    Qty. Owned : <%= @owned_stock.quantity %>
-<%# </h1> %>
+<h1>Company : <%= @company_name %></h1> 
+<h1>Qty. Owned : <%= @quantity %></h1> 
 
 <%= form_with model: @transaction do |form| %>
+    <%=form.label "Quantity to Sell" %>
     <%=form.text_field :quantity %>
-    <%= form.submit %>
+    <%=form.label "Current Price" %>
+    <%=form.text_field :price %>
+    <%=form.hidden_field :company_id, value: @company_id %>
+    <%=form.hidden_field :user_id, value: @user.id %>
+    <%=form.hidden_field :type, value: @type   %>
+    <%= form.submit %>    
 <% end %>  
