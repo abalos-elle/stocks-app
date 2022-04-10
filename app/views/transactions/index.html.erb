@@ -18,7 +18,7 @@
           <%= t.created_at %>
         </td>
         <td class="table-primary">
-          <%= t[:type] = 1 ? "Buy" : "Sell" %>
+          <%= t.type == 1 ? "Buy" : "Sell" %>
         </td>
         <td class="table-primary">
           <%= t.company.name %>
