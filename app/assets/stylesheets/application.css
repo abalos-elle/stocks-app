@@ -14,7 +14,6 @@
  *= require_self
  */
 @import 'bootstrap/dist/css/bootstrap.min.css';
-@import './home.scss';
 
 .container{
   width: 100vw;
@@ -22,22 +21,10 @@
   display: flex;
 }
 
-.navigation-menu{
-  height: calc(100% - 40px);
-  width: 10vw;
-  max-width: 400px;
-  margin-top: 40px;
-  padding-bottom: 1rem;    
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
+.negative_change {
+  color: red;
 }
 
-
-.main-page {
-  width: 100%;
-  height: calc(100% - 40px);
-  margin-top: 40px;
+.positive_change{
+  color: green;
 }
-
- 
