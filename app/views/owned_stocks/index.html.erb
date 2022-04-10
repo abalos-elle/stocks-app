@@ -7,6 +7,7 @@
       <th>Symbol</th>
       <th>Qty.</th>
       <th>Price</th>
+      <th>Total</th>
       <th>Date Bought</th>
       <th>Action</th>
     </tr>
@@ -27,10 +28,14 @@
           <%= number_to_currency_p(stock.price) %>
         </td>
         <td class="table-primary">
+          <%= number_to_currency_p(stock.price * stock.quantity) %>
+        </td>
+        <td class="table-primary">
           <%= stock.buy_date.strftime("%F") %>
         </td>
         <td class="table-primary">
           <%# Types: 1 - Buy, 2 - Sell %>
+          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => stock.company.id) %> /
           <%= link_to "Sell", new_transaction_path(:type => 2, :stock => stock.id) %> 
         </td>
       </tr>
