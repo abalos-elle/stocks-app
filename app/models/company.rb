@@ -17,11 +17,12 @@ class Company < ApplicationRecord
         
     end
 
-    def get_top_5
-        Company.order(get_change).limit(5)
+    def self.get_top_5
+        Company.where("latest_price is not null").select("*, ((latest_price/previous_close) - 1) as change_percent").order("change_percent desc").limit(5)
     end
 
     def self.get_bottom_5
-        Company.order("latest_price - previous_close")
+        Company.where("latest_price is not null").select("*, ((latest_price/previous_close) - 1) as change_percent").order("change_percent").limit(5)
     end
+  
 end
