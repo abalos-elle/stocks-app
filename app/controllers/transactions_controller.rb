@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
     before_action :set_user
 
     def index
-        @transactions = Transaction.where("user_id = #{@user.id}")        
+        @transactions = Transaction.where("user_id = #{@user.id}")   
     end
 
     def new
@@ -25,8 +25,9 @@ class TransactionsController < ApplicationController
 
     def create
         @transaction = Transaction.new(params.require(:transaction).permit(:type, :company_id, :user_id, :quantity, :price))
-        @transaction.code = "000" #auto increment this
-        
+        d = DateTime.now
+        @transaction.code = d.strftime("%Y%m%d%H%M%s")
+        byebug
         if @transaction.save
             redirect_to @transaction
         else
