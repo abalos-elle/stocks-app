@@ -19,4 +19,22 @@ window.addEventListener('turbolinks:load', () => {
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+
+    var home = document.getElementById("link_home");
+    var portfolio = document.getElementById("link_portfolio");
+    var transactions = document.getElementById("link_transactions");
+    
+    home.addEventListener("click", setActiveLink );
+    portfolio.addEventListener("click", setActiveLink);
+    transactions.addEventListener("click", setActiveLink);
+
+    function setActiveLink (e) {
+        home.classList.remove("active");
+        portfolio.classList.remove("active");
+        transactions.classList.remove("active");
+
+        let navlink = document.getElementById(e.target.id)
+        navlink.classList.add("active")
+
+    }
 })
