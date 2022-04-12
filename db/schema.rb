@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 2022_04_10_140651) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "exchange"
     t.string "asset_type"
+    t.json "market_capitalization"
+    t.json "beta"
+    t.json "pe_ratio"
+    t.json "eps"
+    t.json "ex_dividend_date"
     t.decimal "latest_price", precision: 15, scale: 4
     t.decimal "previous_close", precision: 15, scale: 4
     t.index ["cik"], name: "index_companies_on_cik", unique: true
