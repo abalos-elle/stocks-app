@@ -1,6 +1,11 @@
 class OwnedStocksController < ApplicationController
     def index
-        @owned_stocks = OwnedStock.all
+        if !user_signed_in?
+            redirect_to new_user_session_path
+          else
+            @user = current_user
+            @owned_stocks = OwnedStock.where("user_id = #{@user.id}")
+        end
     end   
   
 end
