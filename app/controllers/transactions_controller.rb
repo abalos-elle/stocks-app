@@ -9,18 +9,22 @@ class TransactionsController < ApplicationController
         @transaction = Transaction.new
 
         # Types: 1 - Buy, 2 - Sell
-        @type = params[:type].to_i
-        @stock = params[:stock]
+        # @type = params[:type].to_i
+        # @stock = params[:stock]
 
-        if @type == 1
-            @company_id = params[:company_id]
-            @company_name = Company.find(@company_id).name
-            @quantity = 0            
-        elsif @type == 2
-            @company_id = OwnedStock.find(@stock).company_id
-            @company_name = OwnedStock.find(@stock).company.name
-            @quantity = OwnedStock.find(@stock).quantity
-        end      
+        # if @type == 1
+        #     @company_id = params[:company_id]
+        #     @company_name = Company.find(@company_id).name
+        #     @quantity = 0            
+        # elsif @type == 2
+        #     @company_id = OwnedStock.find(@stock).company_id
+        #     @company_name = OwnedStock.find(@stock).company.name
+        #     @quantity = OwnedStock.find(@stock).quantity
+        # end      
+        respond_to do |format|
+            format.html
+            format.js
+          end
     end
 
     def create      
