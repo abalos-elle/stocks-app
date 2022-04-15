@@ -1,2 +1,4 @@
-document.querySelector('#modal-window').style.display = 'fixed';
-document.querySelector('#modal-window').insertAdjacentHTML("beforeend",  "<%= j render 'new', transaction: @transaction %>");
+document.querySelector('body').insertAdjacentHTML("beforeend",  "<%= j render 'new', transaction: @transaction %>");
+
+let myModal = new bootstrap.Modal(document.getElementById('modal-window'), {});
+myModal.show();
