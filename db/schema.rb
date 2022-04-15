@@ -19,18 +19,18 @@ ActiveRecord::Schema.define(version: 2022_04_10_140651) do
     t.string "cik", null: false
     t.string "name", null: false
     t.string "ticker", null: false
-    t.json "prices"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.json "prices"    
     t.string "exchange"
     t.string "asset_type"
+    t.decimal "latest_price", precision: 15, scale: 4
+    t.decimal "previous_close", precision: 15, scale: 4
     t.json "market_capitalization"
     t.json "beta"
     t.json "pe_ratio"
     t.json "eps"
     t.json "ex_dividend_date"
-    t.decimal "latest_price", precision: 15, scale: 4
-    t.decimal "previous_close", precision: 15, scale: 4
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["cik"], name: "index_companies_on_cik", unique: true
     t.index ["ticker"], name: "index_companies_on_ticker", unique: true
   end
