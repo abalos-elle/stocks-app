@@ -12,7 +12,7 @@
           <%=form.label "Quantity to Sell" %>
           <%=form.text_field :quantity %>
           <%=form.label "Current Price" %>
-          <%=form.text_field :price %>
+          <%=form.text_field :price, value: @current_price %>
           <%=form.hidden_field :company_id, value: @company_id %>
           <%=form.hidden_field :user_id, value: @user.id %>
           <%=form.hidden_field :type, value: @type   %>
@@ -20,7 +20,8 @@
         <% end %>  
       </div>
     <div class="modal-footer">
-    <button class="btn btn-primary">Save</button>
+      <button id="closebtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button class="btn btn-primary">Save</button>
     </div>
     </div>
   </div>
