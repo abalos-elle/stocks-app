@@ -13,6 +13,7 @@ import 'stylesheets/application'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+window.bootstrap = bootstrap
 
 window.addEventListener('turbolinks:load', () => {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
