@@ -9,22 +9,24 @@ class TransactionsController < ApplicationController
         @transaction = Transaction.new
 
         # Types: 1 - Buy, 2 - Sell
-        # @type = params[:type].to_i
-        # @stock = params[:stock]
+        @type = params[:type].to_i
+        @stock = params[:stock]
 
-        # if @type == 1
-        #     @company_id = params[:company_id]
-        #     @company_name = Company.find(@company_id).name
-        #     @quantity = 0            
-        # elsif @type == 2
-        #     @company_id = OwnedStock.find(@stock).company_id
-        #     @company_name = OwnedStock.find(@stock).company.name
-        #     @quantity = OwnedStock.find(@stock).quantity
-        # end      
+        if @type == 1
+            @company_id = params[:company_id]
+            @company_name = Company.find(@company_id).name
+            @quantity = 0            
+        elsif @type == 2
+            @company_id = OwnedStock.find(@stock).company_id
+            @company_name = OwnedStock.find(@stock).company.name
+            @quantity = OwnedStock.find(@stock).quantity
+            @current_price = Company.find(@company_id).latest_price
+        end
+              
         respond_to do |format|
             format.html
             format.js
-          end
+        end
     end
 
     def create      
@@ -61,9 +63,4 @@ class TransactionsController < ApplicationController
             @user = current_user           
         end
     end
-
-    # def update_owned_stocks
-        
-    # end
-
 end
