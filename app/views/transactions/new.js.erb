@@ -1,4 +1,13 @@
-document.querySelector('body').insertAdjacentHTML("beforeend",  "<%= j render 'new', transaction: @transaction %>");
+function initboostrap(){
+    let modal = document.getElementById('modal-window');
+    
+    if (modal != null)
+        modal.parentNode.removeChild(modal);
 
-let myModal = new bootstrap.Modal(document.getElementById('modal-window'), {});
-myModal.show();
+    document.querySelector('body').insertAdjacentHTML("beforeend",  "<%= j render 'new', transaction: @transaction %>");
+    
+    let myModal = new bootstrap.Modal(document.getElementById('modal-window'), {});
+    myModal.show();
+}
+
+initboostrap();
