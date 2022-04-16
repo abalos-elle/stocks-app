@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
     before_action :set_user
     
     def index
-        @transactions = Transaction.where("user_id = #{@user.id}")   
+        @transactions = Transaction.where("user_id = #{@user.id}").order("created_at desc")   
     end
 
     def new
@@ -15,11 +15,10 @@ class TransactionsController < ApplicationController
         if @type == 1
             @company_id = params[:company_id]
             @company_name = Company.find(@company_id).name
-            @quantity = 0            
+            @current_price = Company.find(@company_id).latest_price
         elsif @type == 2
             @company_id = OwnedStock.find(@stock).company_id
             @company_name = OwnedStock.find(@stock).company.name
-            @quantity = OwnedStock.find(@stock).quantity
             @current_price = Company.find(@company_id).latest_price
         end
               
@@ -39,7 +38,7 @@ class TransactionsController < ApplicationController
             os = OwnedStock.find_by(company_id: @transaction.company_id)
             
             if os.nil?
-                os = OwnedStock.new(user_id: @user.id, company_id: @transaction.company_id, quantity: params[:transaction][:quantity], price: params[:price])                
+                os = OwnedStock.new(user_id: @user.id, company_id: @transaction.company_id, quantity: params[:transaction][:quantity])                
             else
                 if type == 1
                     os.quantity += @transaction.quantity
@@ -48,7 +47,12 @@ class TransactionsController < ApplicationController
                 end
             end
             os.save
-            redirect_to @transaction
+
+            user = User.find(@user.id)
+            user.wallet_balance += (type == 1? -1 : 1 ) * params[:transaction][:quantity].to_i * @transaction.price            
+            user.save
+
+            redirect_to owned_stocks_path
         else
             render :new, locals: { error: 1, notice: 'Error on article creation' }
         end
