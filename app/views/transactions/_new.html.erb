@@ -11,7 +11,7 @@
           <h3 class="current_price_label">1 stock ≈ <%= number_to_currency_p(@current_price) %></h3>
           <div class="input_container">
             <%=form.label "Quantity to #{ @type == 1? "Buy" : "Sell" }", class: "input_label" %>
-            <%=form.text_field :quantity, class: "quantity_input", placeholder: "100 - 500", autocomplete: "off", id: "quantity" %>
+            <%=form.text_field :quantity, class: "quantity_input", placeholder: "1 - 500", autocomplete: "off", id: "quantity" %>
           </div>
           
           <%=form.hidden_field :price, value: @current_price, id: "current_price" %>
@@ -22,7 +22,7 @@
         <div>
           <div class="input_container">
               <%=form.label "Amount to #{ @type == 1? "Pay" : "Earn" }", class: "input_label" %>
-              <%=form.text_field 0, class: "quantity_input", placeholder: "0.00", id: "amount" %>
+              <%=form.text_field 0, class: "quantity_input", placeholder: "0.00", autocomplete: "off", id: "amount", :readonly => true %>
           </div>
         </div>       
       </div>
