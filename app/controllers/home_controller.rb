@@ -3,12 +3,9 @@ class HomeController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_session_path
     else
-      @user = current_user
-      # @companies = Company.where("latest_price is not null")
-      #@q = Company.select([:name, :ticker, :latest_price, :previous_close]).ransack(params[:q])
+      @user = current_user      
       @companies_top_5 = Company.get_top_5
-      @companies_bottom_5 = Company.get_bottom_5
-      # @q.result(distinct: true)
+      @companies_bottom_5 = Company.get_bottom_5      
     end
   end
 end
