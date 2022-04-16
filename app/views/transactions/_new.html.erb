@@ -1,28 +1,36 @@
+<%= form_with model: @transaction , :html => { :id => "form-transaction"} do |form| %>
 <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">x</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h6 class="modal-title" id="myModalLabel"><%= @company_name %></h6>
+        <button type="button" class="close" data-bs-dismiss="modal">x</button>
       </div>
       <div class="modal-body">
-        <h1>Company : <%= @company_name %></h1> 
-        <h1>Qty. Owned : <%= @quantity %></h1> 
-        <%= form_with model: @transaction do |form| %>
-          <%=form.label "Quantity to Sell" %>
-          <%=form.text_field :quantity %>
-          <%=form.label "Current Price" %>
-          <%=form.text_field :price, value: @current_price %>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <h3 class="current_price_label">1 stock ≈ <%= number_to_currency_p(@current_price) %></h3>
+          <div class="input_container">
+            <%=form.label "Quantity to #{ @type == 1? "Buy" : "Sell" }", class: "input_label" %>
+            <%=form.text_field :quantity, class: "quantity_input", placeholder: "100 - 500", autocomplete: "off", id: "quantity" %>
+          </div>
+          
+          <%=form.hidden_field :price, value: @current_price, id: "current_price" %>
           <%=form.hidden_field :company_id, value: @company_id %>
           <%=form.hidden_field :user_id, value: @user.id %>
           <%=form.hidden_field :type, value: @type   %>
-          <%= form.submit %>    
-        <% end %>  
+        </div> 
+        <div>
+          <div class="input_container">
+              <%=form.label "Amount to #{ @type == 1? "Pay" : "Earn" }", class: "input_label" %>
+              <%=form.text_field 0, class: "quantity_input", placeholder: "0.00", id: "amount" %>
+          </div>
+        </div>       
       </div>
     <div class="modal-footer">
-      <button id="closebtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      <button class="btn btn-primary">Save</button>
+      <%= form.submit "Confirm", class: "btn btn-primary" %>    
+      <button id="closebtn" type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>      
     </div>
     </div>
   </div>
 </div>
+<% end %>  
