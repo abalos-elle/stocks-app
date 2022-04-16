@@ -1,6 +1,5 @@
 <h2>Transactions</h2>
-
-<table class="table table-primary table-striped">
+<table class="table table-primary table-striped table-hover scroll">
   <thead>
     <tr class="table-primary">
       <th>Transaction Date</th>
@@ -30,7 +29,7 @@
           <%= t.quantity %>
         </td>
         <td class="table-primary">
-          <%= t.price %>
+          <%= number_to_currency_p(t.price) %>
         </td>
     </tr>    
     <% end %>
