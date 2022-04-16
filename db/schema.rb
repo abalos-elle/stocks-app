@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_15_140955) do
+ActiveRecord::Schema.define(version: 2022_04_16_071857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2022_04_15_140955) do
   create_table "owned_stocks", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "company_id", null: false
-    t.decimal "quantity"
+    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_owned_stocks_on_company_id"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2022_04_15_140955) do
     t.integer "type"
     t.bigint "user_id", null: false
     t.bigint "company_id", null: false
-    t.decimal "quantity"
+    t.integer "quantity"
     t.decimal "price", precision: 18, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2022_04_15_140955) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "roles"
+    t.decimal "wallet_balance", precision: 15, scale: 2, default: "0.0"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["mobile"], name: "index_users_on_mobile", unique: true
