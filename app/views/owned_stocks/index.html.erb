@@ -1,6 +1,6 @@
 <h2>Owned Stocks </h2>
 
-<table class="table table-primary table-striped">
+<table class="table table-primary table-striped table-hover">
   <thead>
     <tr class="table-primary">
       <th>Name</th>
@@ -31,8 +31,8 @@
         </td>
         <td class="table-primary">
           <%# Types: 1 - Buy, 2 - Sell %>
-          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => stock.company.id) %> /
-          <%= link_to 'Sell', new_transaction_path(:type => 2, :stock => stock.id),  {:remote => true, class: 'btn btn-primary btn-lg'}  %>
+          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => stock.company.id), {:remote => true, class: 'btn btn-primary btn-sm'} %> 
+          <%= link_to 'Sell', new_transaction_path(:type => 2, :stock => stock.id),  {:remote => true, class: 'btn btn-primary btn-sm'}  %>
         </td>
       </tr>
     <% end %>
