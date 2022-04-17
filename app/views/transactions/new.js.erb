@@ -13,10 +13,41 @@ function initboostrap(){
 function addEvents(){
     let quantityToSellBuy = document.getElementById("quantity");
     let amountToPay = document.getElementById("amount");
-    let current_price = document.getElementById("current_price")
+    let current_price = document.getElementById("current_price");
+    let quantity_owned = document.getElementById("quantity_owned");
+    let wallet_balance = document.getElementById("wallet_balance");
+    let btnConfirm = document.getElementById("confirmbtn")
+    let warning_not_enough_balance = document.getElementById("warning_not_enough_balance");
+    let warning_exceed_quantity = document.getElementById("warning_exceed_quantity");
 
     quantityToSellBuy.addEventListener("keyup", function(){
-        amountToPay.value = formatCurrency(quantityToSellBuy.value * current_price.value)
+        let totalAmountToPayOrEarn = quantityToSellBuy.value * current_price.value
+        amountToPay.value = formatCurrency(totalAmountToPayOrEarn);
+        
+        if (quantity_owned.value != ""){
+            if (quantityToSellBuy.value <= 0)
+                btnConfirm.classList.add("disabled");
+            else if (quantityToSellBuy.value > quantity_owned.value){
+                btnConfirm.classList.add("disabled");
+                warning_exceed_quantity.style.visibility = "visible"
+            }                
+            else{
+                btnConfirm.classList.remove("disabled");
+                warning_exceed_quantity.style.visibility = "hidden"
+            }
+            
+        }else{            
+            if (quantityToSellBuy.value <= 0)
+                btnConfirm.classList.add("disabled");
+            else if (totalAmountToPayOrEarn > wallet_balance.value){
+                btnConfirm.classList.add("disabled");
+                warning_not_enough_balance.style.visibility = "visible"
+            }
+            else{
+                btnConfirm.classList.remove("disabled");
+                warning_not_enough_balance.style.visibility = "hidden"
+            }
+        }
     });
 
 }

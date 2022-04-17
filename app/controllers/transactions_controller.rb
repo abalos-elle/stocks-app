@@ -16,10 +16,12 @@ class TransactionsController < ApplicationController
             @company_id = params[:company_id]
             @company_name = Company.find(@company_id).name
             @current_price = Company.find(@company_id).latest_price
+            @wallet_balance = User.find(@user.id).wallet_balance
         elsif @type == 2
             @company_id = OwnedStock.find(@stock).company_id
             @company_name = OwnedStock.find(@stock).company.name
             @current_price = Company.find(@company_id).latest_price
+            @quantity_owned = OwnedStock.find(@stock).quantity            
         end
               
         respond_to do |format|
@@ -54,7 +56,10 @@ class TransactionsController < ApplicationController
 
             redirect_to owned_stocks_path
         else
-            render :new, locals: { error: 1, notice: 'Error on article creation' }
+            respond_to do |format|
+                format.html
+                format.js
+            end
         end
     end
 

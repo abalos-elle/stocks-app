@@ -1,4 +1,4 @@
-<%= form_with model: @transaction , :html => { :id => "form-transaction"} do |form| %>
+<%= form_with model: @transaction , remote: true, :html => { :id => "form-transaction"} do |form| %>
 <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -10,10 +10,15 @@
         <div style="display: flex; flex-direction: column; align-items: center;">
           <h3 class="current_price_label">1 stock ≈ <%= number_to_currency_p(@current_price) %></h3>
           <div class="input_container">
-            <%=form.label "Quantity to #{ @type == 1? "Buy" : "Sell" }", class: "input_label" %>
-            <%=form.text_field :quantity, class: "quantity_input", placeholder: "1 - 500", autocomplete: "off", id: "quantity" %>
+            <div style="display: flex; justify-content: space-between;">
+              <%=form.label "Quantity to #{ @type == 1? "Buy" : "Sell" } ", class: "input_label" %>
+              <label id="warning_not_enough_balance" style="visibility: hidden" class="warning_label">(Not enough balance)</label>
+              <label id="warning_exceed_quantity" style="visibility: hidden" class="warning_label">(Qty. exceeeds owned stocks)</label>
+            </div>            
+            <%=form.text_field :quantity, class: "quantity_input", placeholder: "1 - #{ @type == 1 ? (@wallet_balance/@current_price).floor() : @quantity_owned }", autocomplete: "off", id: "quantity" %>
           </div>
-          
+          <input id="quantity_owned" type="hidden" value=<%= @quantity_owned %>>
+          <input id="wallet_balance" type="hidden" value=<%= @wallet_balance %>>
           <%=form.hidden_field :price, value: @current_price, id: "current_price" %>
           <%=form.hidden_field :company_id, value: @company_id %>
           <%=form.hidden_field :user_id, value: @user.id %>
@@ -27,7 +32,7 @@
         </div>       
       </div>
     <div class="modal-footer">
-      <%= form.submit "Confirm", class: "btn btn-primary" %>    
+      <%= form.submit "Confirm", class: "btn btn-primary", id: "confirmbtn" %>    
       <button id="closebtn" type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>      
     </div>
     </div>

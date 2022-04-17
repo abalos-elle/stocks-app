@@ -29,43 +29,19 @@
   color: green;
 }
 
-table.scroll {
-  /* width: 100%; */ /* Optional */
-  /* border-collapse: collapse; */
-  border-spacing: 0;  
-}
-
-table.scroll tbody,
-table.scroll thead { display: block; }
-
-thead tr th { 
-  height: 30px;
-  line-height: 30px;
-  /* text-align: left; */
-}
-
-table.scroll tbody {
-  height: 70vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-tbody td:last-child, thead th:last-child {
-  border-right: none;
-}
-
 .input_container {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   width: 100%;
-  background-color: #FAFAFA;
+  background-color: #dae3f0;
   border-radius: 8px;
   padding-top: 14px;
   padding-bottom: 14px;
   padding-left: 16px;
   padding-right: 16px;
-  border: 1px solid #FAFAFA;
+  border: 1px solid #dae3f0;
+  margin-bottom: 10px;
 }
 
 .input_container:hover {
@@ -81,12 +57,11 @@ tbody td:last-child, thead th:last-child {
   color: #1E2329;
   font-size: 20px;
   outline: none;
-  background-color: #FAFAFA;
+  background-color: #dae3f0;
   border: 0 none;
   line-height: 21px;
   font-family: inherit;
 }
-
 
 .input_label{
   box-sizing: border-box;
@@ -108,6 +83,26 @@ tbody td:last-child, thead th:last-child {
   align-items: center;
 }
 
+.warning_label{
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: red;
+  font-size: 14px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .current_price_label{
   box-sizing: border-box;
   margin: 0;
@@ -115,4 +110,27 @@ tbody td:last-child, thead th:last-child {
   color: #707A8A;
   font-size: 16px;
   margin-bottom: 10px;
+}
+
+.tableFixHead {
+  overflow-y: auto;
+  height: 80vh;
+
+}
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+  border-bottom: #1E2329 1px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 8px 16px;
+}
+th {
+  background: #eee;
 }
