@@ -1,37 +1,39 @@
 <h2>Transactions</h2>
-<table class="table table-primary table-striped table-hover scroll">
-  <thead>
-    <tr class="table-primary">
-      <th>Transaction Date</th>
-      <th>Activity</th>
-      <th>Name</th>
-      <th>Symbol</th>
-      <th>Qty.</th>
-      <th>Price</th>            
-    </tr>
-  </thead>
-  <tbody>
-    <% @transactions.each do |t|%>
-    <tr>
-        <td class="table-primary">
-          <%= t.created_at %>
-        </td>
-        <td class="table-primary">
-          <%= t.type == 1 ? "Buy" : "Sell" %>
-        </td>
-        <td class="table-primary">
-          <%= t.company.name %>
-        </td>
-        <td class="table-primary">
-          <%= t.company.ticker %>
-        </td>
-        <td class="table-primary">
-          <%= t.quantity %>
-        </td>
-        <td class="table-primary">
-          <%= number_to_currency_p(t.price) %>
-        </td>
-    </tr>    
-    <% end %>
-  </tbody>
-</table>
+<div class="tableFixHead">
+  <table class="table table-primary table-striped table-hover scroll">
+    <thead>
+      <tr class="table-primary">
+        <th>Transaction Date</th>
+        <th>Activity</th>
+        <th>Name</th>
+        <th>Symbol</th>
+        <th>Qty.</th>
+        <th>Price</th>            
+      </tr>
+    </thead>
+    <tbody>
+      <% @transactions.each do |t|%>
+      <tr>
+          <td class="table-primary">
+            <%= t.created_at %>
+          </td>
+          <td class="table-primary">
+            <%= t.type == 1 ? "Buy" : "Sell" %>
+          </td>
+          <td class="table-primary">
+            <%= t.company.name %>
+          </td>
+          <td class="table-primary">
+            <%= t.company.ticker %>
+          </td>
+          <td class="table-primary">
+            <%= t.quantity %>
+          </td>
+          <td class="table-primary">
+            <%= number_to_currency_p(t.price) %>
+          </td>
+      </tr>    
+      <% end %>
+    </tbody>
+  </table>
+</div>
