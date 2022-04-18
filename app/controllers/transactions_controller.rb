@@ -1,4 +1,6 @@
 class TransactionsController < ApplicationController
+    access all: [:sell, :create]
+
     def sell    
         # @owned_stock = OwnedStock.find(params[:owned_stock_id])      
         @transaction = Transaction.new
