@@ -38,9 +38,7 @@ ActiveRecord::Schema.define(version: 2022_04_15_190227) do
   create_table "owned_stocks", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "company_id", null: false
-    t.decimal "quantity"
-    t.decimal "price", precision: 5, scale: 2
-    t.datetime "buy_date"
+    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_owned_stocks_on_company_id"
@@ -49,11 +47,11 @@ ActiveRecord::Schema.define(version: 2022_04_15_190227) do
 
   create_table "transactions", force: :cascade do |t|
     t.string "code"
-    t.decimal "type"
+    t.integer "type"
     t.bigint "user_id", null: false
     t.bigint "company_id", null: false
-    t.decimal "quantity"
-    t.decimal "price", precision: 5, scale: 4
+    t.integer "quantity"
+    t.decimal "price", precision: 18, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_transactions_on_company_id"
@@ -79,6 +77,7 @@ ActiveRecord::Schema.define(version: 2022_04_15_190227) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "roles"
     t.boolean "is_approved", default: false
+    t.decimal "wallet_balance", precision: 15, scale: 2, default: "0.0"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["mobile"], name: "index_users_on_mobile", unique: true

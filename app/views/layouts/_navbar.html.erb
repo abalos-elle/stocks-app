@@ -19,6 +19,9 @@
         method: :get,  
         class: "nav-link #{active_class(transactions_path)}"%>
       </li>
+      <li>
+        Wallet Balance <%=  number_to_currency_p(@user.wallet_balance) %>
+      </li>
       <% if logged_in?(:admin)%>
         <li class="nav-item">
           <%= link_to "User Management", 
