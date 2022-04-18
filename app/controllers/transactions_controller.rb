@@ -1,9 +1,13 @@
 class TransactionsController < ApplicationController
-    access all: [:sell, :create]
+    access all: [:new, :index, :create]
     before_action :set_user
     
     def index
-        @transactions = Transaction.where("user_id = #{@user.id}").order("created_at desc")   
+        if @user.has_roles?(:admin)
+            @transactions = Transaction.order("created_at desc")   
+        else
+            @transactions = Transaction.where("user_id = #{@user.id}").order("created_at desc")   
+        end
     end
 
     def new

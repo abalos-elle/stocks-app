@@ -4,6 +4,7 @@
     <thead>
       <tr class="table-primary">
         <th>Transaction Date</th>
+        <th>Trader</th>
         <th>Activity</th>
         <th>Name</th>
         <th>Symbol</th>
@@ -16,6 +17,9 @@
       <tr>
           <td class="table-primary">
             <%= t.created_at %>
+          </td>
+          <td class="table-primary">
+            <%= t.user.first_name + ' ' + t.user.last_name %>
           </td>
           <td class="table-primary">
             <%= t.type == 1 ? "Buy" : "Sell" %>
