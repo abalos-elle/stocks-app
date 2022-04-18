@@ -1,0 +1,22 @@
+// Google Font Import
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+// Colors
+$white-font: #dcdbe0;
+$body-bg: #0f1012;
+$nav-bg: #171719;
+$cards-bg: #1b1d1d;
+$green-btn: #5eea93;
+$dark-green-text: #3B684D;
+$green-text: #059E4A;
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    background-color: $body-bg;
+    color: $white-font;
+    font-family: 'Lato', sans-serif;
+}

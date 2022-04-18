@@ -1,0 +1,36 @@
+<div class="main-body-container">
+    <div>
+        <%= link_to "Add a Trader", 
+            new_user_path,
+            method: :get,
+            class: "btn btn-primary" %>
+    </div>
+    <br>
+    <br>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Full Name</td>
+                    <td>Email Address</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                        <td>
+                            <%= link_to "#{user.first_name} #{user.last_name}", edit_user_registration_path  %>
+                        </td>
+                        <td>
+                            <%= user.email %>
+                        </td>
+                        <td>
+                            <%= user.is_approved ? "Verified" : "For Verification" %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

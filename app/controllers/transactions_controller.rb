@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+    access all: [:sell, :create]
     before_action :set_user
     
     def index

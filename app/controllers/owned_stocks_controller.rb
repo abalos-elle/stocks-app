@@ -8,5 +8,4 @@ class OwnedStocksController < ApplicationController
             @owned_stocks = OwnedStock.joins(:company).where("user_id = #{@user.id} and quantity <> 0").order("company.name")
         end
     end   
-  
 end
