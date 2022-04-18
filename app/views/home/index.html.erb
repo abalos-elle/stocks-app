@@ -1,11 +1,5 @@
 <h2>Stock Trends </h2>
-<%# <%= search_form_for @q, remote: true do |f| 
-  <%= f.label :name_cont, 'Company Name' 
-  <%= f.search_field :name_cont 
-  <%= f.submit 
-<% end %> 
-
-<table class="table table-primary table-striped">
+<table class="table table-primary table-striped table-hover">
   <thead>
     <tr class="table-primary">
       <th>Name</th>
@@ -35,14 +29,14 @@
           </span>
         </td>
          <td class="table-primary">
-          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => cmp.id) %>
+          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => cmp.id), {:remote => true, class: 'btn btn-primary btn-sm'} %>           
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<table class="table table-primary table-striped">
+<table class="table table-primary table-striped table-hover">
   <thead>
     <tr class="table-primary">
       <th>Name</th>
@@ -72,7 +66,7 @@
           </span>
         </td>
         <td class="table-primary">
-          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => cmp.id) %>
+          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => cmp.id), {:remote => true, class: 'btn btn-primary btn-sm'} %>           
         </td>
       </tr>
     <% end %>
