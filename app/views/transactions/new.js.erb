@@ -27,7 +27,7 @@ function addEvents(){
         if (quantity_owned.value != ""){
             if (quantityToSellBuy.value <= 0)
                 btnConfirm.classList.add("disabled");
-            else if (quantityToSellBuy.value > quantity_owned.value){
+            else if (parseInt(quantityToSellBuy.value) > parseInt(quantity_owned.value)){
                 btnConfirm.classList.add("disabled");
                 warning_exceed_quantity.style.visibility = "visible"
             }                
@@ -39,7 +39,7 @@ function addEvents(){
         }else{            
             if (quantityToSellBuy.value <= 0)
                 btnConfirm.classList.add("disabled");
-            else if (totalAmountToPayOrEarn > wallet_balance.value){
+            else if (parseFloat(totalAmountToPayOrEarn) > parseFloat(wallet_balance.value)){
                 btnConfirm.classList.add("disabled");
                 warning_not_enough_balance.style.visibility = "visible"
             }
