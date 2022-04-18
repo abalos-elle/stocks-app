@@ -134,3 +134,7 @@ td {
 th {
   background: #eee;
 }
+
+.hide_column{
+  display: none;
+}
