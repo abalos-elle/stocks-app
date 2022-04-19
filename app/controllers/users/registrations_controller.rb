@@ -24,30 +24,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  # Update Account Settings
+  def settings
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)    
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
+    if resource_updated
+      redirect_to edit_user_registration_path
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
+  end
 
   protected
-
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :middle_name, :last_name, :mobile, :birthday])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :middle_name, :last_name, :mobile, :birthday, :is_approved, {roles: []}])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :middle_name, :last_name, :mobile, :birthday])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :middle_name, :last_name, :mobile, :birthday, :is_approved, {roles: []}])
+  end
+
+  def resource_updated
+    update_resource(resource, account_update_params)
   end
 
   # The path used after sign up.

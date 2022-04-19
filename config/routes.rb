@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   # Set homepage
   root "home#index"
   
-  # Devise routes
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -14,12 +13,12 @@ Rails.application.routes.draw do
   resources :companies
   resources :home
   resources :owned_stocks
-  resources :transactions do
-    post :sell
-  end
+  resources :transactions 
   resources :users do
     resources :owned_stocks do     
     end
   end
-
+  
+  # Custom routes
+  get '/errors/forbidden', to: 'errors#unapproved', as: 'forbidden'
 end

@@ -7,21 +7,35 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>   
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= custom_js %>
   </head>
-  <div class="container">
+  <div class="container body">
     <body class="row mt-3 mb-1 body-container">
-      <% if user_signed_in? %>
-        <nav class="col-3 sidebar-container">
+      <% if user_signed_in? && @user.has_roles?(:admin) %>
+        <nav class="col-2 sidebar-container">
           <%= render 'layouts/navbar' %>
         </nav>
+        <main class="col-10 main-container">
+          <%= render 'layouts/header' %>
+          <%= render 'layouts/alerts' %>
+          <%= yield %>
+        </main>
+      <% elsif user_signed_in? && @user.is_approved === true  %>
+        <nav class="col-2 sidebar-container">
+          <%= render 'layouts/navbar' %>
+        </nav>
+        <main class="col-10 main-container">
+          <%= render 'layouts/header' %>
+          <%= render 'layouts/alerts' %>
+          <%= yield %>
+        </main>
+      <% else %>
+        <main class="col-12 main-container">
+          <%= yield %>
+        </main>
       <% end %>
-      <main class="col-9 main-container">
-        <%= render 'layouts/header' %>
-        <%= render 'layouts/alerts' %>
-        <%= yield %>
-      </main>
     </body>
   </div>
 </html>

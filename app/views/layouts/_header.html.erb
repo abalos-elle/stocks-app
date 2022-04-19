@@ -1,4 +1,4 @@
-<header class="py-3 mb-3 border-bottom">
+<header class="py-3 mb-3">
     <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
       <div class="">
         Insert Logo Here
@@ -17,9 +17,10 @@
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li class="dropdown-item">
                     <%= link_to "My Profile", edit_user_registration_path, method: :get %>
-                    
                 </li>
-                <li><a class="dropdown-item" href="#">Account Settngs</a></li>
+                <li class="dropdown-item">
+                    <%= link_to "Account Settings" %>
+                </li>
                 <li><hr class="dropdown-divider"></li>
                 <li class="dropdown-item">
                     <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>

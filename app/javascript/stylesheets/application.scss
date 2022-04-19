@@ -1,5 +1,33 @@
+@import 'bootstrap';
+@import 'base';
+
+// Import different views scss
+@import 'errors/403';
+
+.body {
+    padding: 0;
+}
+
 .body-container, .sidebar-container, .sidebar, .main-container {
     height: 100vh;
+    overflow-y: scroll;
+
+    a {
+        color: $white-font;
+    }
+}
+
+.sidebar {
+    background-color: $nav-bg;
+    color: $white-font;
+
+    .nav-item {
+        text-align: left;
+
+        .nav-link {
+            padding-left: 32px;
+        }
+    }
 }
 
 @import '~bootstrap/scss/bootstrap';
@@ -85,3 +113,4 @@
   .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
     background-color: #5897fb;
     color: white; }
+    

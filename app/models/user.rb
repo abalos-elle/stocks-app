@@ -14,4 +14,11 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :validatable, :confirmable, :timeoutable
+  
+  before_save :admin_auto_approved
+
+  private
+  def admin_auto_approved
+    self.has_roles?(:admin) ? self.is_approved = true : self.is_approved = false
+  end
 end
