@@ -29,3 +29,88 @@
         }
     }
 }
+
+@import '~bootstrap/scss/bootstrap';
+
+/* select2 width */
+.select2-container {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    vertical-align: middle; }
+    .select2-container .select2-selection--single {
+      box-sizing: border-box;
+      cursor: pointer;
+      display: block;
+      height: 28px; }
+      
+  /* add bg to dropdown */
+  .select2-dropdown {
+    background-color: white;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 100%;
+    z-index: 2; }
+  
+  /* to remove list style */
+  .select2-results__options {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  
+  /* add padding to results */  
+  .select2-results__option {
+    padding: 6px; }
+    
+  /* cursor to pointer*/
+  .select2-results__option--selectable {
+    cursor: pointer; }
+  
+  /* to open dropdown */  
+  .select2-container--open .select2-dropdown {
+    left: 0; }
+  
+  /* search bar size */
+  .select2-search--dropdown {
+    display: block;
+    padding: 4px; }
+    .select2-search--dropdown .select2-search__field {
+      padding: 4px;
+      width: 100%;
+      box-sizing: border-box; }
+      
+  /* to not duplicate select bar */
+  .select2-hidden-accessible {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important; }
+  
+  /* select bar outline */  
+  .select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px; }
+    .select2-container--default .select2-selection--single .select2-selection__placeholder {
+      color: #999; }
+    
+  /* to make dropdown short */
+  .select2-container--default .select2-results > .select2-results__options {
+    max-height: 200px;
+    overflow-y: auto; }
+  
+  /* highlight color on hover */
+  .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: #5897fb;
+    color: white; }
+    

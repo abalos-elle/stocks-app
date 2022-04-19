@@ -9,6 +9,7 @@ class CompaniesController < ApplicationController
         else
             @user = current_user
             @company = Company.find(params[:id])
+            @companies = Company.all
         end
     end
 end
