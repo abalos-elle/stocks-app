@@ -4,11 +4,13 @@
     <thead>
       <tr class="table-primary">
         <th>Transaction Date</th>
+        <th class=<%= @user.has_roles?(:admin) ? "" : "hide_column" %>>Trader</th>
         <th>Activity</th>
         <th>Name</th>
         <th>Symbol</th>
         <th>Qty.</th>
         <th>Price</th>            
+        <th>Total</th>            
       </tr>
     </thead>
     <tbody>
@@ -16,6 +18,9 @@
       <tr>
           <td class="table-primary">
             <%= t.created_at %>
+          </td>
+          <td class=<%= @user.has_roles?(:admin) ? "" : "hide_column" %> >
+            <%= t.user.first_name + ' ' + t.user.last_name %>
           </td>
           <td class="table-primary">
             <%= t.type == 1 ? "Buy" : "Sell" %>
@@ -31,6 +36,9 @@
           </td>
           <td class="table-primary">
             <%= number_to_currency_p(t.price) %>
+          </td>
+          <td class="table-primary">
+            <%= number_to_currency_p(t.price * t.quantity) %>
           </td>
       </tr>    
       <% end %>
