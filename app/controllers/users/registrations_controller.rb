@@ -24,17 +24,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # Update Account Settings
+  # DELETE /resource
+  def destroy
+    super
+  end
+
   def settings
+    @user = current_user
+    render 'users/registrations/settings',
+      locals: {resource: @user, resource_name: :user}
+  end
+  
+  def edit_settings
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)    
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
     if resource_updated
-      redirect_to edit_user_registration_path
+        redirect_to settings_path
     else
-      clean_up_passwords resource
-      set_minimum_password_length
-      respond_with resource
+        clean_up_passwords resource
+        set_minimum_password_length
+        respond_with resource
     end
   end
 
