@@ -70,3 +70,4 @@ gem 'alphavantagerb'
 gem "haml"
 gem "httparty"
 gem 'ransack'
+gem 'resque'
