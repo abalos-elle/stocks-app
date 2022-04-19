@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-    before_action :is_admin, only: [:new, :create, :edit, :update]
+    before_action :is_admin, only: [:new, :create, :edit, :update, :verify]
     
     # Admin: User Management
     def index
-        @users = User.where(roles: [:user])
+        @users = User.where(roles: [:trader, :user])
     end
 
     def new
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         if @user.save
             redirect_to users_path
         else
-            render :new_user
+            render :new
         end
     end
     
@@ -25,28 +25,29 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        render 'users/registrations/edit',
-            locals: {resource: @user, resource_name: :user}
+        if @user.update(user_params)
+            redirect_to users_path
+        else
+            render :edit
+        end
     end
 
     def destroy
-
+        @user = User.find(params[:id])
+        @user.destroy
+        redirect_to users_path
     end
 
-    def verify_trader
+    def verify
+        @user = User.find(params[:id])
+        if @user.is_approved?
+            @user.update_attribute(:is_approved, false)
+        else
+            @user.update_attribute(:is_approved, true)
+        end
+        redirect_to users_path
+    end
         
-    end
-    
-    # Admin: Update user details
-    # def update_user
-    #     @user = User.find(params[:id])
-    #     if @user.update(user_params)
-    #     redirect_to users_path
-    #     else
-    #     render :edit_user
-    #     end
-    # end
-    
     protected
     def is_admin
         if current_user

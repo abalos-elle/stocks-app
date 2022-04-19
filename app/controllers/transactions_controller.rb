@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-    access all: [:new, :index, :create]
+    access all: [:index, :new, :create]
     before_action :set_user
     
     def index
