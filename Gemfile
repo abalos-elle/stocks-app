@@ -32,7 +32,6 @@ gem 'mailgun-ruby', '~> 1.2', '>= 1.2.5'
 # Add gem to manage multiple roles
 gem 'petergate', '~> 3.0'
 
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
