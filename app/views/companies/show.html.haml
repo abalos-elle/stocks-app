@@ -1,9 +1,3 @@
-= javascript_pack_tag 'search'
-
-%select#search{name: "company_id"}
-  = @companies.each do |company|
-    %option{value: "#{company.id}"}= company.name
-
 %h2= @company.name
 
 %br
@@ -25,22 +19,6 @@
 %p
   Market Capitalization:  
   %span= @company.market_capitalization
-
-%p
-  Beta:  
-  %span= @company.beta
-
-%p
-  PE Ratio:  
-  %span= @company.pe_ratio
-
-%p
-  EPS:  
-  %span= @company.eps
-
-%p
-  Ex-Dividend Date:  
-  %span= @company.ex_dividend_date
 
 %br
 
