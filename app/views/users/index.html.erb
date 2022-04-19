@@ -13,20 +13,36 @@
                 <tr>
                     <td>Full Name</td>
                     <td>Email Address</td>
-                    <td>Status</td>
+                    <td colspan="3">Actions</td>
                 </tr>
             </thead>
             <tbody>
                 <% @users.each do |user| %>
                     <tr>
                         <td>
-                            <%= link_to "#{user.first_name} #{user.last_name}", edit_user_registration_path  %>
+                            <%= link_to "#{user.first_name} #{user.last_name}", edit_user_path(user)  %>
                         </td>
                         <td>
                             <%= user.email %>
                         </td>
                         <td>
-                            <%= user.is_approved ? "Verified" : "For Verification" %>
+                            <% if user.is_approved? %>
+                                <%= link_to 'Revoke Verification', 
+                                    verify_user_path(user),  
+                                    method: :patch, 
+                                    data: { confirm: 'This trader will not be allowed to make transactions. Proceed?' } %>
+                            <% else %>
+                                <%= link_to 'Verify', 
+                                    verify_user_path(user), 
+                                    method: :patch, 
+                                    data: { confirm: 'This trader will be verified. Proceed?' } %>
+                            <% end %>
+                            
+                        </td>
+                        <td>
+                            <%= link_to "Delete", 
+                                user_path(user), 
+                                method: :delete %>
                         </td>
                     </tr>
                 <% end %>

@@ -15,10 +15,22 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :validatable, :confirmable, :timeoutable
   
-  before_save :admin_auto_approved
+  before_create :default_role 
+  before_save :admin_auto_approved, :update_password
+  
 
   private
   def admin_auto_approved
     self.has_roles?(:admin) ? self.is_approved = true : self.is_approved = false
+  end
+
+  def default_role
+    self.roles = [:trader]
+  end
+
+  def update_password
+    if self.has_roles?(:admin)
+      self.encrypted_password = self.encrypted_password
+    end
   end
 end
