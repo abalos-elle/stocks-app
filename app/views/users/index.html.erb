@@ -13,6 +13,7 @@
                 <tr>
                     <td>Full Name</td>
                     <td>Email Address</td>
+                    <td>Email Confirmation Status</td>
                     <td colspan="3">Actions</td>
                 </tr>
             </thead>
@@ -20,10 +21,17 @@
                 <% @users.each do |user| %>
                     <tr>
                         <td>
-                            <%= link_to "#{user.first_name} #{user.last_name}", edit_user_path(user)  %>
+                            <%= "#{user.first_name} #{user.last_name}" %>
                         </td>
                         <td>
                             <%= user.email %>
+                        </td>
+                        <td>
+                            <% if user.confirmed_at.blank? %>
+                                Unconfirmed
+                            <% else %>
+                                Confirmed
+                            <% end %>
                         </td>
                         <td>
                             <% if user.is_approved? %>
@@ -38,6 +46,10 @@
                                     data: { confirm: 'This trader will be verified. Proceed?' } %>
                             <% end %>
                             
+                        </td>
+                        <td>
+                            <%= link_to "Edit", 
+                                edit_user_path(user) %>
                         </td>
                         <td>
                             <%= link_to "Delete", 
