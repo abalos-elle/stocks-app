@@ -10,6 +10,7 @@ import "channels"
 import * as bootstrap from 'bootstrap'
 import 'stylesheets/application'
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -20,3 +21,4 @@ window.addEventListener('turbolinks:load', () => {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 })
+
