@@ -1,7 +1,7 @@
 <h2>Stock Trends </h2>
-<table class="table table-primary table-striped table-hover">
+<table class="">
   <thead>
-    <tr class="table-primary">
+    <tr class="">
       <th>Name</th>
       <th>Symbol</th>
       <th>Previous Close</th>
@@ -14,25 +14,25 @@
     <h4>Top 5 </h4>
     <% @companies_top_5.each do |cmp| %>
       <tr>
-        <td class="table-primary">
+        <td class="">
           <%= cmp.name %>
         </td>
-        <td class="table-primary">
+        <td class="">
           <%= cmp.ticker     %>
         </td>
-        <td class="table-primary">
+        <td class="">
           <%= cmp.previous_close %>
         </td>
-        <td class="table-primary">
+        <td class="">
           <%= cmp.latest_price %>
         </td>
-        <td class="table-primary">
+        <td class="">
           <% percent_change = cmp.get_change_percent%>
           <span class=<%= percent_change >= 0 ? "positive_change" : "negative_change" %>>
             <%= number_to_percent(percent_change) %>
           </span>
         </td>
-         <td class="table-primary">
+         <td class="">
           <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => cmp.id), {:remote => true, id: 'btn_buy_' + cmp.id.to_s , class: 'btn btn-primary btn-sm ' + (@user.is_approved? ? "" : "disabled")} %>           
         </td>
       </tr>
@@ -40,9 +40,9 @@
   </tbody>
 </table>
 
-<table class="table table-primary table-striped table-hover">
+<table class="">
   <thead>
-    <tr class="table-primary">
+    <tr class="">
       <th>Name</th>
       <th>Symbol</th>
       <th>Previous Close</th>
@@ -55,25 +55,25 @@
     <h4>Bottom 5 </h4>
     <% @companies_bottom_5.each do |cmp| %>
       <tr>
-        <td class="table-primary">
+        <td class="">
           <%= cmp.name %>
         </td>
-        <td class="table-primary">
+        <td class="">
           <%= cmp.ticker     %>
         </td>
-         <td class="table-primary">
+         <td class="">
           <%= cmp.previous_close %>
         </td>
-        <td class="table-primary">
+        <td class="">
           <%= cmp.latest_price %>
         </td>
-        <td class="table-primary">
+        <td class="">
           <% percent_change = cmp.get_change_percent%>
           <span class=<%= percent_change >= 0 ? "positive_change" : "negative_change" %>>
             <%= number_to_percent(percent_change) %>
           </span>
         </td>
-        <td class="table-primary">
+        <td class="">
           <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => cmp.id), {:remote => true, class: 'btn btn-primary btn-sm ' + (@user.is_approved? ? "" : "disabled") } %>           
         </td>
       </tr>

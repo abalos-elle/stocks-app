@@ -15,6 +15,11 @@
 
     a {
         color: $white-font;
+
+        &:hover {
+            color: $green-btn;
+            text-decoration: none;
+        }
     }
 }
 
@@ -33,13 +38,69 @@
 
     .role-navbar {
         text-align: left !important;
+        margin-left: 54px !important;
+        letter-spacing: 2px;
+        font-size: 12px;
     }
 
     .nav-item {
         text-align: left;
 
         .nav-link {
-            padding-left: 32px;
+            padding-left: 28px;
+        }
+
+        .nav-text {
+            margin-left: 4px;
         }
     }
+
+    .nav-account {
+        text-align: left;
+        padding-left: 24px;
+        color: $gray;
+        letter-spacing: 4px;
+    }
+
+    .nav-acct-name {
+        letter-spacing: 2px;
+        margin-right: 32px;
+    }
+}
+
+.dropdown-item {
+    letter-spacing: 2px;
+    a {
+        color: $white-font;
+        text-decoration: none !important;
+
+        &:hover {
+            color: $green-btn;            
+        }
+    }
+}
+
+.nav-item {
+    letter-spacing: 2px;
+}
+
+.nav .nav-link.active, .show > .nav-link {
+    color: $green-btn;
+    letter-spacing: 2px;
+}
+
+.btn-primary {
+    background-color: $nav-bg !important;
+    border-color: $green-btn !important;
+    color: $white-font !important;
+}
+
+.btn-forms {
+    width: 50%;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: $green-btn !important;
+    border-color: $green-btn !important;
+    color: white !important;
 }
