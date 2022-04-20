@@ -31,6 +31,8 @@ gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'mailgun-ruby', '~> 1.2', '>= 1.2.5'
 # Add gem to manage multiple roles
 gem 'petergate', '~> 3.0'
+# Add figaro gem
+gem 'figaro'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
