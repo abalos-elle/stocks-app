@@ -2,13 +2,18 @@ require 'rails_helper'
 
 RSpec.describe "Companies", type: :feature do
     describe "View all companies" do
-        before {visit companies_path}
+        before {visit '/'}
+        it 'show the list of all companies' do
+            within 'body'  do
+                fill_in 'Email Address', with: 'jdlc@gmail.com'
+                fill_in 'Password', with: '123456'
+                click_button 'Login'
+    
+                expect(page).to have_content("Stock Trends")
 
-        it 'shows all companies in the body' do
-            within 'body' do
-                expect(page).to have_content("Companies")
+                visit companies_path
                 expect(page).to have_content("Companies")
             end
-        end    
+        end        
     end
 end
