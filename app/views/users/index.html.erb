@@ -35,10 +35,10 @@
                         </td>
                         <td>
                             <% if user.is_approved? %>
-                                <%= link_to 'Revoke Verification', 
-                                    verify_user_path(user),  
+                                <%= link_to 'Revoke', 
+                                    revoke_user_path(user),  
                                     method: :patch, 
-                                    data: { confirm: 'This trader will not be allowed to make transactions. Proceed?' } %>
+                                    data: { confirm: 'Verification of this trader will be revoked. Proceed?' } %>
                             <% else %>
                                 <%= link_to 'Verify', 
                                     verify_user_path(user), 
