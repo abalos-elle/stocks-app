@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
     access all: [:index, :new, :create]
     before_action :set_user
+    protect_from_forgery except: :new
     
     def index
         if @user.has_roles?(:admin)

@@ -4,7 +4,8 @@
     <tr class="table-primary">
       <th>Name</th>
       <th>Symbol</th>
-      <th>Price</th>
+      <th>Previous Close</th>
+      <th>Current Price</th>
       <th>Percent Change</th>
       <th>Action</th>
     </tr>
@@ -20,16 +21,19 @@
           <%= cmp.ticker     %>
         </td>
         <td class="table-primary">
+          <%= cmp.previous_close %>
+        </td>
+        <td class="table-primary">
           <%= cmp.latest_price %>
         </td>
         <td class="table-primary">
           <% percent_change = cmp.get_change_percent%>
-          <span class=<%= percent_change > 0 ? "positive_change" : "negative_change" %>>
+          <span class=<%= percent_change >= 0 ? "positive_change" : "negative_change" %>>
             <%= number_to_percent(percent_change) %>
           </span>
         </td>
          <td class="table-primary">
-          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => cmp.id), {:remote => true, class: 'btn btn-primary btn-sm ' + (@user.is_approved? ? "" : "disabled")} %>           
+          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => cmp.id), {:remote => true, id: 'btn_buy_' + cmp.id.to_s , class: 'btn btn-primary btn-sm ' + (@user.is_approved? ? "" : "disabled")} %>           
         </td>
       </tr>
     <% end %>
@@ -41,7 +45,8 @@
     <tr class="table-primary">
       <th>Name</th>
       <th>Symbol</th>
-      <th>Price</th>
+      <th>Previous Close</th>
+      <th>Current Price</th>
       <th>Percent Change</th>
       <th>Action</th>
     </tr>
@@ -56,12 +61,15 @@
         <td class="table-primary">
           <%= cmp.ticker     %>
         </td>
+         <td class="table-primary">
+          <%= cmp.previous_close %>
+        </td>
         <td class="table-primary">
           <%= cmp.latest_price %>
         </td>
         <td class="table-primary">
           <% percent_change = cmp.get_change_percent%>
-          <span class=<%= percent_change > 0 ? "positive_change" : "negative_change" %>>
+          <span class=<%= percent_change >= 0 ? "positive_change" : "negative_change" %>>
             <%= number_to_percent(percent_change) %>
           </span>
         </td>
