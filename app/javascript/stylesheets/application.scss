@@ -3,6 +3,7 @@
 
 // Import different views scss
 @import 'errors/403';
+@import 'forms';
 
 .body {
     padding: 0;
@@ -20,6 +21,19 @@
 .sidebar {
     background-color: $nav-bg;
     color: $white-font;
+
+    .logo-nav {
+        width: 100%;
+    }
+
+    .dropdown-account {
+        width: 100%; 
+        margin-left: 24px !important;
+    }
+
+    .role-navbar {
+        text-align: left !important;
+    }
 
     .nav-item {
         text-align: left;

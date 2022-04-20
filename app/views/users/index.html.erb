@@ -11,6 +11,7 @@
         <table>
             <thead>
                 <tr>
+                    <td>User Type</td>
                     <td>Full Name</td>
                     <td>Email Address</td>
                     <td>Email Confirmation Status</td>
@@ -20,6 +21,13 @@
             <tbody>
                 <% @users.each do |user| %>
                     <tr>
+                        <td>
+                            <% if user.has_roles?(:admin) %>
+                                <span>Administrator</span>
+                            <% else %>
+                                <span>Trader</span>
+                            <% end %>
+                        </td>
                         <td>
                             <%= "#{user.first_name} #{user.last_name}" %>
                         </td>

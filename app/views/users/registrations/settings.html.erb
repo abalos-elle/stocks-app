@@ -1,12 +1,12 @@
 <div class="d-flex flex-column align-items-center">
-<h2>Update My Account Settings</h2>
+<h2>Update My Account</h2>
 <br>
 <br>
 
-<%= form_for(resource, as: resource_name, url: settings_path, html: { method: :put }) do |f| %>  
+<%= form_for(resource, as: resource_name, url: settings_path, html: { method: :put, class: "row" }) do |f| %>  
   <%= render "users/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :email, {class: "form-label"} %>
+  <div class="field col-12">
+    <%= f.label :email, {class: "form-label, label"} %>
     <br />
     <%= f.email_field :email, {class: "form-control"} %>
   </div>
@@ -17,8 +17,8 @@
   <% end %>
   <br>
 
-  <div class="field">
-    <%= f.label :password, "New password", {class: "form-label"} %> 
+  <div class="field col-12">
+    <%= f.label :password, "New password", {class: "form-label, label"} %> 
     <br />
     <%= f.password_field :password, {class: "form-control"} %>
     <% if @minimum_password_length %>
@@ -28,15 +28,15 @@
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password", {class: "form-label"} %>
+  <div class="field col-12">
+    <%= f.label :password_confirmation, "Confirm new password", {class: "form-label, label"} %>
     <br />
     <%= f.password_field :password_confirmation, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :current_password, {class: "form-label"} %> 
+  <div class="field col-12">
+    <%= f.label :current_password, {class: "form-label, label"} %> 
     <br />
     <%= f.password_field :current_password, {class: "form-control"} %>
   </div>
@@ -49,8 +49,9 @@
   <br>
   <br>
 <% end %>
-
-<p>Unhappy with us? We're sad to see you go. <%= button_to "Cancel my Account", user_registration_path(resource), data: { confirm: "Are you sure you want to delete your account?" }, method: :delete, class: "btn btn-secondary" %></p>
 </div>
-<br>
-<%= link_to "Back", :back %>
+
+<div class="row col-12 mt-5">
+  <p>Unhappy with us? We're sad to see you go. 
+  <%= button_to "Cancel my Account", user_registration_path(resource), data: { confirm: "Are you sure you want to delete your account?" }, method: :delete, class: "btn btn-secondary" %></p>
+</div>

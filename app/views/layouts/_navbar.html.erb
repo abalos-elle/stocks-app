@@ -1,6 +1,38 @@
 <div class="d-flex flex-column flex-shrink-0 sidebar">
+  <div class='my-2 logo-nav'>
+    <img src="https://gcdnb.pbrd.co/images/WTB3Qbaoxmnr.png?o=1" width="160px" height=auto class="align-left">
+  </div>
     <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+    <div class="dropdown mb-1 dropdown-account">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <div class="ml-3">
+          <%= "#{@user.first_name} #{@user.last_name}" %>
+          </div>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li class="dropdown-item">
+            <%= link_to "My Profile", edit_user_registration_path, method: :get %>
+        </li>
+        <li class="dropdown-item">
+            <%= link_to "Account Settings", settings_path, method: :get %>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-item">
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+    </div>
+    <div class"role-navbar">
+      <div>
+        <% if @user.has_roles?(:admin) %>
+          Administrator
+        <% else %>
+          Trader
+        <% end %>
+      </div>
+    </div>
+    <ul class="nav nav-pills flex-column mb-auto mt-4">
       <li class="nav-item">
         <%= link_to "Home", 
         root_path, 
