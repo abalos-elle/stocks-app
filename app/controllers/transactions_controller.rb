@@ -4,6 +4,7 @@ class TransactionsController < ApplicationController
     protect_from_forgery except: :new
     
     def index
+        @all_companies = Company.all
         if @user.has_roles?(:admin)
             @transactions = Transaction.order("created_at desc")   
         else

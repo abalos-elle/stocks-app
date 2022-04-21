@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_20_150738) do
+ActiveRecord::Schema.define(version: 2022_04_20_234258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,13 +24,18 @@ ActiveRecord::Schema.define(version: 2022_04_20_150738) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "exchange"
     t.string "asset_type"
-    t.decimal "latest_price", precision: 15, scale: 4
-    t.decimal "previous_close", precision: 15, scale: 4
     t.json "market_capitalization"
     t.json "beta"
     t.json "pe_ratio"
     t.json "eps"
     t.json "ex_dividend_date"
+    t.decimal "latest_price", precision: 15, scale: 4
+    t.decimal "previous_close", precision: 15, scale: 4
+    t.integer "dividend_per_share"
+    t.integer "dividend_yield"
+    t.integer "forward_pe"
+    t.integer "ebitda"
+    t.integer "profit_margin"
     t.index ["cik"], name: "index_companies_on_cik", unique: true
     t.index ["ticker"], name: "index_companies_on_ticker", unique: true
   end
@@ -51,7 +56,7 @@ ActiveRecord::Schema.define(version: 2022_04_20_150738) do
     t.bigint "user_id", null: false
     t.bigint "company_id", null: false
     t.integer "quantity"
-    t.decimal "price", precision: 18, scale: 4
+    t.decimal "price", precision: 15, scale: 2, default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_transactions_on_company_id"

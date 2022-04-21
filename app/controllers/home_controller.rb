@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     # @companies = Company.where("latest_price is not null")
     @q = Company.select([:name, :ticker, :latest_price, :previous_close]).ransack(params[:q])
     @companies = @q.result(distinct: true)
+    @all_companies = Company.all
   end
 
   private

@@ -2,9 +2,32 @@
     <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
       <div class="d-flex align-items-center">
         <% if user_signed_in? %>
-            <form class="w-100 me-3">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
+            <%= javascript_pack_tag 'search' %>
+            <select id="search" name="company_id" class="w-100 me-3">
+              <%= @all_companies.each do |company| %>
+                <option value="<%= company.id %>">
+                  <%= company.name %>
+                </option>
+              <% end %>
+            </select>
+
+            <div class="flex-shrink-0 dropdown">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= "Welcome, #{@user.first_name}!" %>
+            </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                <li class="dropdown-item">
+                    <%= link_to "My Profile", edit_user_registration_path, method: :get %>
+                </li>
+                <li class="dropdown-item">
+                    <%= link_to "Account Settings", settings_path, method: :get %>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li class="dropdown-item">
+                    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                </li>
+            </ul>
+            </div>
         <% end %>
       </div>
       <div>

@@ -6,6 +6,7 @@ class OwnedStocksController < ApplicationController
             @user = current_user
             # @owned_stocks = OwnedStock.where("user_id = #{@user.id} and quantity <> 0").order("company_name")
             @owned_stocks = OwnedStock.joins(:company).where("user_id = #{@user.id} and quantity <> 0").order("company.name")
+            @all_companies = Company.all
         end
     end   
 end
