@@ -128,3 +128,7 @@ td {
 .hide_column{
   display: none;
 }
+
+.no_underline{
+  text-decoration: none;
+}
