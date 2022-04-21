@@ -1,33 +1,73 @@
 <div class="d-flex flex-column flex-shrink-0 sidebar">
+  <div class='my-2 logo-nav'>
+    <img src="https://gcdnb.pbrd.co/images/WTB3Qbaoxmnr.png?o=1" width="160px" height=auto>
+  </div>
     <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+    <span class="nav-account mb-2">ACCOUNT</span>
+    <div class="dropdown mb-1 dropdown-account">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#55ce85" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user roundedd-circle me-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <div class="ml-3">
+          <span class="nav-acct-name">
+            <%= "#{@user.first_name} #{@user.last_name}" %>
+          </span>
+          </div>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li class="dropdown-item">
+          <%= link_to "My Profile", edit_user_registration_path, method: :get %>
+        </li>
+        <li class="dropdown-item">
+            <%= link_to "Account Settings", settings_path, method: :get %>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-item">
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+    </div>
+    <div class="role-navbar">
+      <div class="role-navbar-text">
+        <% if @user.has_roles?(:admin) %>
+          Administrator
+        <% else %>
+          Trader
+        <% end %>
+      </div>
+    </div>
+    <ul class="nav nav-highlight flex-column mb-auto mt-5">
       <li class="nav-item">
-        <%= link_to "Home", 
-        root_path, 
+        <%= link_to root_path, 
         method: :get,  
-        class: "nav-link #{active_class(root_path)}"%>
+        class: "nav-link #{active_class(root_path)}" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span class="nav-text">Home</span>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Portfolio", 
-        owned_stocks_path, 
+        <%= link_to owned_stocks_path, 
         method: :get,  
-        class: "nav-link #{active_class(owned_stocks_path)}"%>
+        class: "nav-link #{active_class(owned_stocks_path)}" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          <span class="nav-text">Portfolio</span>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Transactions", 
-        transactions_path, 
+        <%= link_to transactions_path, 
         method: :get,  
-        class: "nav-link #{active_class(transactions_path)}"%>
-      </li>
-      <li>
-        Wallet Balance <%=  number_to_currency_p(@user.wallet_balance) %>
+        class: "nav-link #{active_class(transactions_path)}" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <span class="nav-text">Transactions</span>
+        <% end %>
       </li>
       <% if logged_in?(:admin)%>
         <li class="nav-item">
-          <%= link_to "User Management", 
-          users_path, 
-          method: :get,  
-          class: "nav-link #{active_class(users_path)}"%>
+        <%= link_to users_path, 
+        method: :get,  
+        class: "nav-link #{active_class(users_path)}" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="nav-text">User Management</span>
+        <% end %>
         </li>
       <% end %>
     </ul>

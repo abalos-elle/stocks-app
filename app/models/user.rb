@@ -6,11 +6,13 @@ class User < ApplicationRecord
   ## The multiple option can be set to true if you need users to have multiple roles.       ##
   petergate(roles: [:admin, :trader], multiple: true)                                      ##
   ############################################################################################ 
- 
+  # Validations
+  validates :first_name, :last_name, :birthday, :roles, presence: true
+  validates :password, format: { with: /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}/i, message: "Password must have at least 8 characters, one uppercase letter, one lowercase letter, one digit, and one special character." }
 
   # Include default devise modules. Others available are:
   # :lockable, :trackable
-  has_many :owned_stocks
+  has_many :owned_stocks, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :validatable, :confirmable, :timeoutable
