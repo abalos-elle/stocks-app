@@ -16,7 +16,7 @@
     <% @companies_top_5.each do |cmp| %>
       <tr>
         <td class="">
-          <%= cmp.name %>
+          <%= link_to cmp.name, company_path(cmp.id), {class: "no_underline"} %>
         </td>
         <td class="">
           <%= cmp.ticker     %>

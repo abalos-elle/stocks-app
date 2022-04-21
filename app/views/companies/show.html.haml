@@ -22,4 +22,14 @@
 
 %br
 
+%p
+  Current price:
+  %span= @company.latest_price
+
+%br
+
+= link_to "Buy", new_transaction_path(:type => 1, :company_id => @company.id), {:remote => true, id: 'btn_buy_' + @company.id.to_s , class: 'btn btn-primary btn-lg ' + (@user.is_approved? ? "" : "disabled")}
+
+%br
+%br
 = link_to 'Go back to Home page', companies_path
