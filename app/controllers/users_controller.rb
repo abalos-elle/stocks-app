@@ -66,8 +66,8 @@ class UsersController < ApplicationController
           redirect_to new_user_session_path
         end
     end
-
+    
     def user_params
-        params.require(:user).permit(:first_name, :middle_name, :last_name, :mobile, :birthday, :is_approved, {roles: []})
+        params.require(:user).permit(:first_name, :middle_name, :last_name, :mobile, :birthday, :is_approved, :password, :current_password, {roles: []})
     end
 end

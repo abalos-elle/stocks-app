@@ -129,8 +129,20 @@
 
 .negative_change {
     color: $red-text;
-  }
+}
   
-  .positive_change{
+.positive_change{
     color: $green-btn;
-  }
+}
+
+a.btn-yellow {
+    &:hover {
+        color: $yellow;
+    }
+}
+
+a.btn-red {
+    &:hover {
+        color: $red-text;
+    }
+}
