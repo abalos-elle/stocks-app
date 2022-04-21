@@ -31,8 +31,8 @@
         </td>
         <td class="table-primary">
           <%# Types: 1 - Buy, 2 - Sell %>
-          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => stock.company.id), {:remote => true, class: 'btn btn-primary btn-sm'} %> 
-          <%= link_to 'Sell', new_transaction_path(:type => 2, :stock => stock.id),  {:remote => true, class: 'btn btn-primary btn-sm'}  %>
+          <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => stock.company.id), {:remote => true, class: 'btn btn-primary btn-sm ' + (@user.is_approved? ? "" : "disabled")} %> 
+          <%= link_to 'Sell', new_transaction_path(:type => 2, :stock => stock.id),  {:remote => true, class: 'btn btn-primary btn-sm ' + (@user.is_approved? ? "" : "disabled")}  %>
         </td>
       </tr>
     <% end %>

@@ -1,10 +1,15 @@
 class TransactionsController < ApplicationController
     access all: [:index, :new, :create]
     before_action :set_user
+    protect_from_forgery except: :new
     
     def index
-        @transactions = Transaction.where("user_id = #{@user.id}").order("created_at desc")
-        @all_companies = Company.all   
+        @all_companies = Company.all
+        if @user.has_roles?(:admin)
+            @transactions = Transaction.order("created_at desc")   
+        else
+            @transactions = Transaction.where("user_id = #{@user.id}").order("created_at desc")   
+        end
     end
 
     def new

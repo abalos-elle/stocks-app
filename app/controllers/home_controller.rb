@@ -13,10 +13,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       @user = current_user      
       @companies_top_5 = Company.get_top_5
-      @companies_bottom_5 = Company.get_bottom_5 
-      if @user.has_roles?(:trader, :user) && !@user.is_approved
-        redirect_to forbidden_path
-      end
+      @companies_bottom_5 = Company.get_bottom_5        
     else
       redirect_to new_user_session_path
     end

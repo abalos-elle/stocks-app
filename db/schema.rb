@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2022_04_20_234258) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "roles"
     t.boolean "is_approved", default: false
-    t.decimal "wallet_balance", precision: 15, scale: 2, default: "0.0"
+    t.decimal "wallet_balance", precision: 15, scale: 2, default: "100.0"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["mobile"], name: "index_users_on_mobile", unique: true
