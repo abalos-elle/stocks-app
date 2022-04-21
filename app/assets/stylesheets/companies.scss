@@ -1,3 +1,86 @@
 // Place all the styles related to the companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.test{
+    color:white;
+}
+
+.flex-container {
+    display: flex;
+    background-color: rgb(24, 24, 24);
+    color: white;
+    padding-left: 20px; 
+    padding-right: 20px; 
+    padding-top: 15px; 
+    border-radius: 10px;
+    align-content: space-around;
+}
+
+.flex-container .gray {
+    color: gray;
+}
+
+.flex-container .white {
+    color: white;
+}
+
+.flex1 {
+    position: absolute;
+    left: 550px;
+    top: 199px;
+    width: 200px;
+    height: 135px;
+}
+
+.flex2 {
+    position: absolute;
+    left: 805px;
+    top: 199px;
+    width: 400px;
+}
+
+.flex2 div {
+    margin: 20px;
+}
+
+.flex3 {
+    position: absolute;
+    left: 550px;
+    top: 400px;
+    font-size: 10px;
+    text-align: left;
+    width: 250px;
+    
+}
+
+.flex4 {
+    position: absolute;
+    left: 855px;
+    top: 400px;
+    text-align: left;
+    width: 350px;
+    height: 130px;
+    padding-top: 30px;
+}
+
+.flex5 {
+    position: absolute;
+    left: 855px;
+    top: 585px;
+    width: 350px;
+    padding-top: 0px;
+}
+
+.flex5 div {
+    margin: 30px;
+}
+
+.button {
+    background-color: rgb(48, 47, 47);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    width: 80px;
+}
+
