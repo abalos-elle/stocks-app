@@ -88,22 +88,6 @@ RSpec.describe User, type: :model do
             expect(second.errors.to_hash.keys).to include(:email)
             expect(second.errors[:email]).to include("has already been taken")
         end
-
-        it "should have at least 8 min characters, one lowercase letter, one uppercase letter, one digit, and one special character for the password" do
-            user.first_name = "Han"
-            user.last_name = "Solo"
-            user.email = "test@example.com"
-            user.password = "P@ssw0rd"
-            user.birthday = "11/02/1991"
-            user.mobile = "09234567890"
-            user.created_at = DateTime.now
-            user.updated_at = DateTime.now
-
-            
-            expect(user).to be_valid
-            expect(user.errors).to_not be_present
-            expect(user.password).to match(/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}/)  
-        end
     end
 
     context "default values" do
