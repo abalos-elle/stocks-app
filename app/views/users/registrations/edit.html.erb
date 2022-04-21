@@ -1,65 +1,65 @@
 <div class="d-flex flex-column align-items-center">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Edit My Profile</h2>
 <br>
 <br>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "row" }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :first_name, "First Name", {class: "form-label"} %>
+  <div class="field col-md-4">
+    <%= f.label :first_name, "First Name", {class: "form-label, label"} %>
     <br />
     <%= f.text_field :first_name, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :middle_name, "Middle Name (optional)", {class: "form-label"} %>
+  <div class="field col-md-4">
+    <%= f.label :middle_name, "Middle Name (optional)", {class: "form-label, label"} %>
     <br />
     <%= f.text_field :middle_name, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :last_name, "Last Name", {class: "form-label"} %>
+  <div class="field col-md-4">
+    <%= f.label :last_name, "Last Name", {class: "form-label, label"} %>
     <br />
     <%= f.text_field :last_name, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :birthday, "Birthday", {class: "form-label"} %>
+  <div class="field col-md-6">
+    <%= f.label :birthday, "Birthday", {class: "form-label, label"} %>
     <br />
     <%= f.date_field :birthday, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :mobile, "Mobile No.", {class: "form-label"} %>
+  <div class="field col-md-6">
+    <%= f.label :mobile, "Mobile No.", {class: "form-label, label"} %>
     <br />
     <%= f.text_field :mobile, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :email, "Email Address", {class: "form-label"} %>
-    <br />
-    <%= f.email_field :email, {class: "form-control"} %>
-  </div>
-  <br>
-
   <% if logged_in?(:admin) %>
-    <div class="field">
-        <%= f.label :roles, "User Type", {class: "form-label"} %>
+    <div class="field col-md-12">
+        <%= f.label :roles, "User Type", {class: "form-label, label"} %>
         <br />
         <%= f.select :roles, [["Administrator", "admin"], ["Trader", "trader"]], {}, {multiple: true, class: "form-control"} %>
     </div>
     <br>
   <% end %>
-    <br>
-
-  <div class="field">
-    <%= f.label :current_password, {class: "form-label"} %>
+  <br>
+  
+  <div class="field col-12">
+    <%= f.label :email, "Email Address", {class: "form-label, label"} %>
+    <br />
+    <%= f.email_field :email, {class: "form-control"} %>
+  </div>
+  <br>
+  
+  <div class="field col-md-12">
+    <%= f.label :current_password, {class: "form-label, label"} %>
     <br />
     <%= f.password_field :current_password, {class: "form-control"} %>
   </div>
@@ -67,9 +67,9 @@
   <br>
 
   <div class="actions">
-    <%= f.submit "Update My Profile", {class: "btn btn-primary"} %>
+    <%= f.submit "Update My Profile", {class: "btn btn-primary btn-forms"} %>
   </div>
 <% end %>
 </div>
 <br>
-<%= link_to "Back", :back %>
+

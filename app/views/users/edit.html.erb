@@ -3,55 +3,60 @@
 <br>
 <br>
 
-<%= form_for(@user) do |f| %>
-  <div class="field">
-    <%= f.label :first_name, "First Name", {class: "form-label"} %>
+<%= form_for(@user, :html => {class: "row"}) do |f| %>
+  <%= link_to "Back", :back %>
+  <br>
+  <br>
+  <br>
+  <div class="field col-md-4">
+    <%= f.label :first_name, "First Name", {class: "form-label, label"} %>
     <br />
     <%= f.text_field :first_name, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :middle_name, "Middle Name (optional)", {class: "form-label"} %>
+  <div class="field col-md-4">
+    <%= f.label :middle_name, "Middle Name (optional)", {class: "form-label, label"} %>
     <br />
     <%= f.text_field :middle_name, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :last_name, "Last Name", {class: "form-label"} %>
+  <div class="field col-md-4">
+    <%= f.label :last_name, "Last Name", {class: "form-label, label"} %>
     <br />
     <%= f.text_field :last_name, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :birthday, "Birthday", {class: "form-label"} %>
+  <div class="field col-md-6">
+    <%= f.label :birthday, "Birthday", {class: "form-label, label"} %>
     <br />
     <%= f.date_field :birthday, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :mobile, "Mobile No.", {class: "form-label"} %>
+  <div class="field col-md-6">
+    <%= f.label :mobile, "Mobile No.", {class: "form-label, label"} %>
     <br />
     <%= f.text_field :mobile, {class: "form-control"} %>
   </div>
   <br>
 
-  <div class="field">
-    <%= f.label :email, "Email Address", {class: "form-label"} %>
+  <div class="field col-12">
+    <%= f.label :email, "Email Address", {class: "form-label, label"} %>
     <br />
     <%= f.email_field :email, {class: "form-control"} %>
   </div>
   <br>
 
   <% if logged_in?(:admin) %>
-    <div class="field">
-        <%= f.label :roles, "User Type", {class: "form-label"} %>
+    <div class="field col-12">
+        <%= f.label :roles, "User Type", {class: "form-label, label"} %>
         <br />
         <%= f.select :roles, [["Administrator", "admin"], ["Trader", "trader"]], {}, {multiple: true, class: "form-control"} %>
     </div>
+    <br>
     <br>
     <br>
   <% end %>
@@ -61,4 +66,3 @@
   </div>
 <% end %>
 <br>
-<%= link_to "Back", :back %>

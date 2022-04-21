@@ -3,6 +3,7 @@
 
 // Import different views scss
 @import 'errors/403';
+@import 'forms';
 
 .body {
     padding: 0;
@@ -14,6 +15,11 @@
 
     a {
         color: $white-font;
+
+        &:hover {
+            color: $green-btn;
+            text-decoration: none;
+        }
     }
 }
 
@@ -21,11 +27,110 @@
     background-color: $nav-bg;
     color: $white-font;
 
+    .logo-nav {
+        width: 100%;
+        text-align: left;
+        margin-left: 24px;
+    }
+
+    .dropdown-account {
+        width: 100%; 
+        margin-left: 24px !important;
+    }
+
+    .role-navbar {
+        text-align: left !important;
+        margin-left: 54px !important;
+        letter-spacing: 2px;
+        font-size: 12px;
+    }
+
     .nav-item {
         text-align: left;
 
         .nav-link {
-            padding-left: 32px;
+            padding-left: 28px;
+        }
+
+        .nav-text {
+            margin-left: 4px;
+        }
+    }
+
+    .nav-account {
+        text-align: left;
+        padding-left: 24px;
+        color: $gray;
+        letter-spacing: 4px;
+    }
+
+    .nav-acct-name {
+        letter-spacing: 2px;
+        margin-right: 32px;
+    }
+}
+
+.dropdown-item {
+    letter-spacing: 2px;
+    a {
+        color: $white-font;
+        text-decoration: none !important;
+
+        &:hover {
+            color: $green-btn;            
         }
     }
 }
+
+.nav-item {
+    letter-spacing: 2px;
+}
+
+.nav .nav-link.active, .show > .nav-link {
+    color: $green-btn;
+    letter-spacing: 2px;
+}
+
+.btn-primary {
+    background-color: $nav-bg !important;
+    border-color: $green-btn !important;
+    color: $white-font !important;
+}
+
+.btn-forms {
+    width: 50%;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: $green-btn !important;
+    border-color: $green-btn !important;
+    color: white !important;
+}
+
+.table {
+    color: $white-font;
+
+    thead {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 20px;
+    }
+
+    tr {
+        line-height: 48px;
+        min-height: 48px;
+        height: 48px;
+    }
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: $green-btn;
+}
+
+.negative_change {
+    color: $red-text;
+  }
+  
+  .positive_change{
+    color: $green-btn;
+  }
