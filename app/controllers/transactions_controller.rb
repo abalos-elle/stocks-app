@@ -3,7 +3,8 @@ class TransactionsController < ApplicationController
     before_action :set_user
     
     def index
-        @transactions = Transaction.where("user_id = #{@user.id}").order("created_at desc")   
+        @transactions = Transaction.where("user_id = #{@user.id}").order("created_at desc")
+        @all_companies = Company.all   
     end
 
     def new

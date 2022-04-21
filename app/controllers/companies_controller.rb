@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
     def index
         @companies = Company.all
+        @all_companies = Company.all
     end
 
     def show
@@ -9,6 +10,7 @@ class CompaniesController < ApplicationController
         else
             @user = current_user
             @company = Company.find(params[:id])
+            @all_companies = Company.all
         end
     end
 end
