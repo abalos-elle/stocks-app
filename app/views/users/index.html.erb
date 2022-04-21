@@ -15,6 +15,7 @@
                     <th scope="col">Full Name</td>
                     <th scope="col">Email Address</td>
                     <th scope="col">Email Confirmation</td>
+                    <th scope="col">Account Status</td>
                     <th scope="col" colspan="3">Actions</td>
                 </tr>
             </thead>
@@ -40,6 +41,9 @@
                             <% else %>
                                 Confirmed
                             <% end %>
+                        </td>
+                        <td>
+                            <%= user.is_approved? ? "Verified" : "Unverified" %>
                         </td>
                         <td>
                             <% if user.is_approved? %>
