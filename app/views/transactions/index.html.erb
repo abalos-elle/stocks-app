@@ -1,43 +1,43 @@
 <h2>Transactions</h2>
-<div class="tableFixHead">
-  <table class="table table-primary table-striped table-hover scroll">
+<div class="table-responsive">
+  <table class="table">
     <thead>
-      <tr class="table-primary">
-        <th>Transaction Date</th>
-        <th class=<%= @user.has_roles?(:admin) ? "" : "hide_column" %>>Trader</th>
-        <th>Activity</th>
-        <th>Name</th>
-        <th>Symbol</th>
-        <th>Qty.</th>
-        <th>Price</th>            
-        <th>Total</th>            
+      <tr class="">
+        <th scope="col">Transaction Date</th>
+        <th class=<%= @user.has_roles?(:admin) ? "col" : "hide_column" %>>Trader</th>
+        <th scope="col">Activity</th>
+        <th scope="col">Name</th>
+        <th scope="col">Symbol</th>
+        <th scope="col">Qty.</th>
+        <th scope="col">Price</th>            
+        <th scope="col">Total</th>            
       </tr>
     </thead>
     <tbody>
       <% @transactions.each do |t|%>
       <tr>
-          <td class="table-primary">
+          <td class="">
             <%= t.created_at %>
           </td>
           <td class=<%= @user.has_roles?(:admin) ? "" : "hide_column" %> >
             <%= t.user.first_name + ' ' + t.user.last_name %>
           </td>
-          <td class="table-primary">
+          <td class="">
             <%= t.type == 1 ? "Buy" : "Sell" %>
           </td>
-          <td class="table-primary">
+          <td class="">
             <%= t.company.name %>
           </td>
-          <td class="table-primary">
+          <td class="">
             <%= t.company.ticker %>
           </td>
-          <td class="table-primary">
+          <td class="">
             <%= t.quantity %>
           </td>
-          <td class="table-primary">
+          <td class="">
             <%= number_to_currency_p(t.price) %>
           </td>
-          <td class="table-primary">
+          <td class="">
             <%= number_to_currency_p(t.price * t.quantity) %>
           </td>
       </tr>    

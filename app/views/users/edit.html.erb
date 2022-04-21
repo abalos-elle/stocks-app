@@ -4,8 +4,6 @@
 <br>
 
 <%= form_for(@user, :html => {class: "row"}) do |f| %>
-  <%= link_to "Back", :back %>
-  <br>
   <br>
   <br>
   <div class="field col-md-4">
@@ -44,25 +42,19 @@
   <br>
 
   <div class="field col-12">
-    <%= f.label :email, "Email Address", {class: "form-label, label"} %>
-    <br />
-    <%= f.email_field :email, {class: "form-control"} %>
+      <%= f.label :roles, "User Type", {class: "form-label, label"} %>
+      <br />
+      <%= f.select :roles, [["Administrator", "admin"], ["Trader", "trader"]], {}, {multiple: true, class: "form-control"} %>
   </div>
-  <br>
 
-  <% if logged_in?(:admin) %>
-    <div class="field col-12">
-        <%= f.label :roles, "User Type", {class: "form-label, label"} %>
-        <br />
-        <%= f.select :roles, [["Administrator", "admin"], ["Trader", "trader"]], {}, {multiple: true, class: "form-control"} %>
-    </div>
-    <br>
-    <br>
-    <br>
-  <% end %>
-
-  <div class="actions">
+  <div class="field col-12">
+    <%= f.label :current_password, "User Password", {class: "form-label, label"} %> 
+    <br />
+    <%= f.password_field :current_password, {class: "form-control", placeholder: "***********", disabled: true, value: @user.password} %>
+  </div>
+  
+  <div class="actions mt-3">
     <%= f.submit "Update Trader Account", {class: "btn btn-primary"} %>
   </div>
 <% end %>
-<br>
+
