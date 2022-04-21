@@ -29,6 +29,8 @@
 
     .logo-nav {
         width: 100%;
+        text-align: left;
+        margin-left: 24px;
     }
 
     .dropdown-account {
@@ -104,3 +106,31 @@
     border-color: $green-btn !important;
     color: white !important;
 }
+
+.table {
+    color: $white-font;
+
+    thead {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 20px;
+    }
+
+    tr {
+        line-height: 48px;
+        min-height: 48px;
+        height: 48px;
+    }
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: $green-btn;
+}
+
+.negative_change {
+    color: $red-text;
+  }
+  
+  .positive_change{
+    color: $green-btn;
+  }
