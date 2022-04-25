@@ -7,43 +7,77 @@
     </div>
     <br>
     <br>
-    <div>
-        <table>
+    <div class="table-responsive">
+        <table class="table">
             <thead>
                 <tr>
-                    <td>Full Name</td>
-                    <td>Email Address</td>
-                    <td colspan="3">Actions</td>
+                    <th scope="col">User Type</th>
+                    <th scope="col">Full Name</td>
+                    <th scope="col">Email Address</td>
+                    <th scope="col">Email Confirmation</td>
+                    <th scope="col">Account Status</td>
+                    <th scope="col" colspan="3">Actions</td>
                 </tr>
             </thead>
             <tbody>
                 <% @users.each do |user| %>
                     <tr>
                         <td>
-                            <%= link_to "#{user.first_name} #{user.last_name}", edit_user_path(user)  %>
+                            <% if user.has_roles?(:admin) %>
+                                <span>Administrator</span>
+                            <% else %>
+                                <span>Trader</span>
+                            <% end %>
+                        </td>
+                        <td>
+                            <%= "#{user.first_name} #{user.last_name}" %>
                         </td>
                         <td>
                             <%= user.email %>
                         </td>
                         <td>
-                            <% if user.is_approved? %>
-                                <%= link_to 'Revoke Verification', 
-                                    verify_user_path(user),  
-                                    method: :patch, 
-                                    data: { confirm: 'This trader will not be allowed to make transactions. Proceed?' } %>
+                            <% if user.confirmed_at.blank? %>
+                                Unconfirmed
                             <% else %>
-                                <%= link_to 'Verify', 
-                                    verify_user_path(user), 
-                                    method: :patch, 
-                                    data: { confirm: 'This trader will be verified. Proceed?' } %>
+                                Confirmed
+                            <% end %>
+                        </td>
+                        <td>
+                            <%= user.is_approved? ? "Verified" : "Unverified" %>
+                        </td>
+                        <td>
+                            <% if user.is_approved? %>
+                                <%= link_to revoke_user_path(user), 
+                                    method: :patch,
+                                    data: { confirm: 'Verification of this trader will be revoked. Proceed?' },  
+                                    class: "btn-yellow" do %>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                                <% end %>
+                            <% else %>
+                                <%= link_to verify_user_path(user), 
+                                    method: :patch,
+                                    data: { confirm: 'This trader will be verified. Proceed?' },  
+                                    class: "" do %>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                                <% end %>
                             <% end %>
                             
                         </td>
                         <td>
-                            <%= link_to "Delete", 
-                                user_path(user), 
-                                method: :delete %>
+                            <%= link_to edit_user_path(user), 
+                                class: "" do %>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            <% end %>
                         </td>
+                        <td>
+                            <%= link_to user_path(user),
+                                method: :delete, 
+                                data: { confirm: 'This trader will be deleted. Proceed?' },
+                                class: "btn-red" do %>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                            <% end %>
+                        </td>
+                        
                     </tr>
                 <% end %>
             </tbody>

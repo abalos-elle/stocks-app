@@ -21,14 +21,6 @@
   display: flex;
 }
 
-.negative_change {
-  color: red;
-}
-
-.positive_change{
-  color: green;
-}
-
 .input_container {
   box-sizing: border-box;
   margin: 0;
@@ -131,10 +123,12 @@ th,
 td {
   padding: 8px 16px;
 }
-th {
-  background: #eee;
-}
+
 
 .hide_column{
   display: none;
+}
+
+.no_underline{
+  text-decoration: none;
 }

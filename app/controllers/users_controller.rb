@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :is_admin, only: [:new, :create, :edit, :update, :verify]
+    before_action :is_admin, only: [:new, :create, :edit, :update, :verify, :revoke]
     
     # Admin: User Management
     def index
@@ -40,14 +40,20 @@ class UsersController < ApplicationController
 
     def verify
         @user = User.find(params[:id])
+        @user.update_column('is_approved', true)
         if @user.is_approved?
-            @user.update_attribute(:is_approved, false)
-        else
-            @user.update_attribute(:is_approved, true)
+            redirect_to users_path
         end
-        redirect_to users_path
     end
-        
+
+    def revoke
+        @user = User.find(params[:id])
+        @user.update_column('is_approved', false)
+        if !@user.is_approved?
+            redirect_to users_path
+        end
+    end
+
     protected
     def is_admin
         if current_user
@@ -60,8 +66,8 @@ class UsersController < ApplicationController
           redirect_to new_user_session_path
         end
     end
-
+    
     def user_params
-        params.require(:user).permit(:first_name, :middle_name, :last_name, :mobile, :birthday, :is_approved, {roles: []})
+        params.require(:user).permit(:first_name, :middle_name, :last_name, :mobile, :birthday, :is_approved, :password, :current_password, {roles: []})
     end
 end

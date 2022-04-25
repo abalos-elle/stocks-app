@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   resources :transactions 
   resources :users do
     member do
-      patch :verify
-      put :verify
+      patch 'verify'
+      patch 'revoke'
     end
     resources :owned_stocks
   end
