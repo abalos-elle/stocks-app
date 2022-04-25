@@ -4,15 +4,13 @@ class FetchCompanyPricesJob < ApplicationJob
 
   def perform(company_id)
     company = Company.find(company_id)
-    # Needs premium account
-    # company.prices = PriceService.fetch_prices(company.ticker) 
-    
-    ps = TimeSeriesService.new
-    company.prices = ps.fetch_timeseries(company.ticker).parsed_response
+    # Needs premium account ---> company.prices = PriceService.fetch_prices(company.ticker) 
 
     quote = PriceService.fetch_quote(company.ticker)
-    company.latest_price = quote.output["Global Quote"]["05. price"]             
-    company.previous_close = quote.output["Global Quote"]["08. previous close"]             
-    company.save!
+    if quote != nil
+      company.latest_price = quote.output["Global Quote"]["05. price"]
+      company.previous_close = quote.output["Global Quote"]["08. previous close"]
+      company.save!
+    end    
   end
 end
