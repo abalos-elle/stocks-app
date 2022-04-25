@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_20_150738) do
+ActiveRecord::Schema.define(version: 2022_04_25_140010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(version: 2022_04_20_150738) do
     t.json "pe_ratio"
     t.json "eps"
     t.json "ex_dividend_date"
+    t.decimal "dividend_per_share"
+    t.decimal "dividend_yield"
+    t.decimal "forward_pe"
+    t.decimal "ebitda"
+    t.decimal "profit_margin"
     t.index ["cik"], name: "index_companies_on_cik", unique: true
     t.index ["ticker"], name: "index_companies_on_ticker", unique: true
   end
@@ -51,7 +56,7 @@ ActiveRecord::Schema.define(version: 2022_04_20_150738) do
     t.bigint "user_id", null: false
     t.bigint "company_id", null: false
     t.integer "quantity"
-    t.decimal "price", precision: 18, scale: 4
+    t.decimal "price", precision: 15, scale: 2, default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_transactions_on_company_id"
@@ -76,8 +81,8 @@ ActiveRecord::Schema.define(version: 2022_04_20_150738) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "roles"
-    t.boolean "is_approved", default: false
     t.decimal "wallet_balance", precision: 15, scale: 2, default: "100.0"
+    t.boolean "is_approved", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["mobile"], name: "index_users_on_mobile", unique: true
