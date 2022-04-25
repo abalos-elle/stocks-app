@@ -9,5 +9,6 @@ class TimeSeriesService
         self.class.get("/query?function=TIME_SERIES_INTRADAY&symbol=#{ticker}&interval=5min&apikey=
             #{Rails.application.credentials.dig(:alphavantage, :key)}"
         )
+    rescue Alphavantage::Error
     end    
 end
