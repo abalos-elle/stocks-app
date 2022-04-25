@@ -7,8 +7,7 @@ class FetchCompanyPricesJob < ApplicationJob
     # Needs premium account
     # company.prices = PriceService.fetch_prices(company.ticker) 
     
-    # HTTParty
-    ps = PriceService.new
+    ps = TimeSeriesService.new
     company.prices = ps.fetch_timeseries(company.ticker).parsed_response
 
     quote = PriceService.fetch_quote(company.ticker)
