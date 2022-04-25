@@ -1,23 +1,23 @@
 <h2 class="test"><%= @company.name %></h2>
 
 <div class="flex-container flex1">
-  <h6 class="gray"><%= @company.ticker %></h6>
-  <h2><%= 300  %></h2>
+  <h6 class="gray"><%=  %></h6>
+  <h2><%= @company.ticker  %></h2>
   <h6><%= "10%"  %></h6>
 </div>
 
 <div class="flex-container flex2">
   <div>
-    <p class="gray">Pre-market</p>
-    <p>Price</p>
+    <p class="gray">Exchange</p>
+    <p><%= @company.exchange%></p>
   </div>
   <div>
     <p class="gray">Previous Close</p>
-    <p>Price</p>
+    <p><%= @company.previous_close%></p>
   </div>
   <div>
     <p class="gray">Open</p>
-    <p>Price</p>
+    <p><%= @company.latest_price%></p>
   </div>
 </div>
 
@@ -36,19 +36,18 @@
 </div>
 
 <div class="flex-container flex4">
-  <p class="gray">Quantity Owned:  <span class="white">Number</span></p>
-  <p class="gray">Bought at:  <span class="white">Price</span></p>   
+  <p class="gray"><h2>Owned Stocks: <span class="white"><%= User.find(@user.id).owned_stocks.where("company_id = #{@company.id}").sum("quantity") %></span></h2></p>  
 </div>
 
 <div class="flex-container flex5">
   <div>
     <p class="gray">Buying</p>
-    <p>Price</p>
-    <button class="button">Buy</button>
+    <p><%= @company.latest_price %></p>
+    <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => @company.id), {:remote => true, class: 'btn btn-primary btn-sm ' + (@user.is_approved? ? "" : "disabled") } %>           
   </div>
   <div>
     <p class="gray">Selling</p>
-    <p>Price</p>
-    <button class="button">Sell</button>
+    <p><%= @company.latest_price %></p>
+    <%= link_to "Sell", new_transaction_path(:type => 2, :stock => User.find(@user.id).owned_stocks.where("company_id = #{@company.id}").select("id").first ), {:remote => true, class: 'btn btn-primary btn-sm ' + (@user.is_approved? ? "" : "disabled") } %>           
   </div>
 </div>
