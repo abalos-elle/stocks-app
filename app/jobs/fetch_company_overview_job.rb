@@ -6,6 +6,9 @@ class FetchCompanyOverviewJob < ApplicationJob
 
     os = OverviewService.new
     company_details = os.fetch_company_overview(company.ticker).parsed_response
+    prices = os.fetch_latest_price(company.ticker).parsed_response
+
+    company.latest_price = prices["Global Quote"]["05. price"]
     company.exchange = company_details["Exchange"]
     company.market_capitalization = company_details["MarketCapitalization"]
     company.beta = company_details["Beta"]

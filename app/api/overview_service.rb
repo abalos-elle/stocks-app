@@ -10,5 +10,14 @@ class OverviewService
         #{Rails.application.credentials.dig(:alphavantage, :key)}"
         self.class.get(url)
     rescue Alphavantage::Error
+        p 'Try again after a few minutes'
+    end
+
+    def fetch_latest_price(ticker)
+        url = "/query?function=GLOBAL_QUOTE&symbol=#{ticker}&apikey=
+        #{Rails.application.credentials.dig(:alphavantage, :key)}"
+        self.class.get(url)
+    rescue Alphavantage::Error
+        p 'Try again after a few minutes'
     end
 end
