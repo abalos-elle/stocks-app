@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import * as bootstrap from 'bootstrap'
 import 'stylesheets/application'
+import Chart from 'chart.js/auto'
 
 Rails.start()
 Turbolinks.start()
@@ -20,4 +21,15 @@ window.addEventListener('turbolinks:load', () => {
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })   
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: JSON.parse(ctx.canvas.dataset.labels),
+        datasets: [{
+        data: JSON.parse(ctx.canvas.dataset.data),
+        }]
+    },
+    });
 })
