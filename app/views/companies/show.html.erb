@@ -1,0 +1,55 @@
+<h2 class="test"><%= @company.name %></h2>
+
+<div class="flex-container flex1">
+  <h6 class="gray"><%=  %></h6>
+  <h2><%= @company.ticker  %></h2>
+  <h6><%= "10%"  %></h6>
+</div>
+
+<canvas id="myChart" width="200px" height="100px" data-labels="<%= @data_keys %>" data-data="<%= @data_values %>" ></canvas>
+
+<div class="flex-container flex2">
+  <div>
+    <p class="gray">Exchange</p>
+    <p><%= @company.exchange%></p>
+  </div>
+  <div>
+    <p class="gray">Previous Close</p>
+    <p><%= @company.previous_close%></p>
+  </div>
+  <div>
+    <p class="gray">Open</p>
+    <p><%= @company.latest_price%></p>
+  </div>
+</div>
+
+<div class="flex-container flex3">
+  <h6>Details</h6>
+  <p class="gray">Market Capitalization:  <span class="white"><%= @company.market_capitalization %></span></p>
+  <p class="gray">Beta:  <span class="white"><%= @company.beta %></span></p>
+  <p class="gray">EPS:  <span class="white"><%= @company.eps %></span></p>
+  <p class="gray">PE Ratio:  <span class="white"><%= @company.pe_ratio %></span></p>
+  <p class="gray">Forward PE:  <span class="white"><%= @company.forward_pe %></span></p>
+  <p class="gray">EBITDA:  <span class="white"><%= @company.ebitda %></span></p>
+  <p class="gray">Profit Margin:  <span class="white"><%= @company.profit_margin %></span></p>
+  <p class="gray">Dividend per Share:  <span class="white"><%= @company.dividend_per_share %></span></p>
+  <p class="gray">Dividend Yield:  <span class="white"><%= @company.dividend_yield %></span></p>
+  <p class="gray">Ex-Dividend Date:  <span class="white"><%= @company.ex_dividend_date %></span></p>
+</div>
+
+<div class="flex-container flex4">
+  <p class="gray"><h2>Owned Stocks: <span class="white"><%= User.find(@user.id).owned_stocks.where("company_id = #{@company.id}").sum("quantity") %></span></h2></p>  
+</div>
+
+<div class="flex-container flex5">
+  <div>
+    <p class="gray">Buying</p>
+    <p><%= @company.latest_price %></p>
+    <%= link_to "Buy", new_transaction_path(:type => 1, :company_id => @company.id), {:remote => true, class: 'btn btn-primary btn-sm ' + (@user.is_approved? ? "" : "disabled") } %>           
+  </div>
+  <div>
+    <p class="gray">Selling</p>
+    <p><%= @company.latest_price %></p>
+    <%= link_to "Sell", new_transaction_path(:type => 2, :stock => User.find(@user.id).owned_stocks.where("company_id = #{@company.id}").select("id").first ), {:remote => true, class: 'btn btn-primary btn-sm ' + (@user.is_approved? ? "" : "disabled") } %>           
+  </div>
+</div>

@@ -5,11 +5,18 @@ class FetchCompanyOverviewJob < ApplicationJob
     company = Company.find(company_id)
 
     os = OverviewService.new
-    company.market_capitalization = os.fetch_market_capitalization(company.ticker).parsed_response["MarketCapitalization"]
-    # company.beta = os.fetch_beta
-    # company.pe_ratio = os.fetch_pe_ratio
-    # company.eps = os.fetch_eps
-    # company.ex_dividend_date = os.fetch_ex_dividend_date
+    company_details = os.fetch_company_overview(company.ticker).parsed_response
+    company.exchange = company_details["Exchange"]
+    company.market_capitalization = company_details["MarketCapitalization"]
+    company.beta = company_details["Beta"]
+    company.pe_ratio = company_details["PERatio"]
+    company.eps = company_details["EPS"]
+    company.ex_dividend_date = company_details["ExDividendDate"]
+    company.dividend_per_share = company_details["DividendPerShare"]
+    company.dividend_yield = company_details["DividendYield"]
+    company.forward_pe = company_details["ForwardPE"]
+    company.ebitda = company_details["EBITDA"]
+    company.profit_margin = company_details["ProfitMargin"]
     company.save!
   end
 end

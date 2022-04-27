@@ -1,3 +1,4 @@
+require 'resque/server'
 Rails.application.routes.draw do
   # Set homepage
   root "home#index"
@@ -27,6 +28,8 @@ Rails.application.routes.draw do
     end
     resources :owned_stocks
   end
+
+  mount Resque::Server.new, at: "/jobs"
  
   # Custom routes
   get '/errors/forbidden', to: 'errors#unapproved', as: 'forbidden'
