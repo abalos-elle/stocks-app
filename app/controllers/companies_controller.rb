@@ -9,9 +9,9 @@ class CompaniesController < ApplicationController
         else
             @user = current_user
             company_id = params[:id]
-            FetchCompanyOverviewJob.perform_now(company_id)
-            FetchCompanyPricesJob.perform_now(company_id)
-            FetchTimeSeriesJob.perform_now(company_id)
+            # FetchCompanyOverviewJob.perform_now(company_id)
+            # FetchCompanyPricesJob.perform_now(company_id)
+            # FetchTimeSeriesJob.perform_now(company_id)
             
             @company = Company.find(company_id)    
             timeseries = Hash.new
