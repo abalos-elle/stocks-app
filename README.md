@@ -20,7 +20,7 @@ Stocks app is a backend project containing listings of companies and stock trend
 
 ## Built With
 ### Technologies
-* [Ruby on Rails](https://guides.rubyonrails.org/)
+* [Ruby on Rails Version 6.1.4.6](https://guides.rubyonrails.org/v6.1/)
 * [Postgres](www.postgresql.org/)
 * [JavaScript](https://www.javascript.com/)
 ### Third Party Packages
