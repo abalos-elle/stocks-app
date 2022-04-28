@@ -1,4 +1,8 @@
-[![Contributors][contributors-shield]][contributors-url]
+[![Contributors](https://img.shields.io/github/contributors/abalos-elle/stocks-app?style=for-the-badge)](https://github.com/abalos-elle/stocks-app/graphs/contributors)
+[![Website](https://img.shields.io/website?down_message=OFFLINE&style=for-the-badge&up_message=ONLINE&url=https%3A%2F%2Favion-stocks-app.herokuapp.com)](https://avion-stocks-app.herokuapp.com)
+![GitHub top language](https://img.shields.io/github/languages/top/abalos-elle/stocks-app?color=red&style=for-the-badge)
+![GitHub followers](https://img.shields.io/github/followers/abalos-elle?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/abalos-elle/stocks-app?style=for-the-badge)
 
 # About the Project
 Stocks app is a backend project containing listings of companies and stock trends from AlphaVantage API, and utilities for you to buy and sell and manage your portfolio.
