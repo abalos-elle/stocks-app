@@ -6,6 +6,9 @@ class FetchCompanyOverviewJob < ApplicationJob
 
     os = OverviewService.new
     company_details = os.fetch_company_overview(company.ticker).parsed_response
+    quote = os.fetch_latest_price(company.ticker).parsed_response
+    time_series = os.fetch_timeseries(company.ticker).parsed_response
+
     company.exchange = company_details["Exchange"]
     company.market_capitalization = company_details["MarketCapitalization"]
     company.beta = company_details["Beta"]
@@ -17,6 +20,9 @@ class FetchCompanyOverviewJob < ApplicationJob
     company.forward_pe = company_details["ForwardPE"]
     company.ebitda = company_details["EBITDA"]
     company.profit_margin = company_details["ProfitMargin"]
+
+    company.latest_price = quote["Global Quote"]["05. price"]
+    company.prices = time_series
     company.save!
   end
 end

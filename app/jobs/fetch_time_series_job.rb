@@ -7,6 +7,7 @@ class FetchTimeSeriesJob < ApplicationJob
       
       ts = TimeSeriesService.new
       company.prices = ts.fetch_timeseries(company.ticker).parsed_response
+      company.save!
     end
   end
   

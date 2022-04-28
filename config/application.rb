@@ -21,13 +21,10 @@ module StocksApp
     config.active_job.queue_adapter = :resque
 
     config.after_initialize do
-      # FetchCompanyPricesJob.perform_later(100)
-      # FetchCompanyPricesJob.perform_later(101)
-      # FetchCompanyPricesJob.perform_later(102)
-      # FetchCompanyPricesJob.perform_later(103)
-      # FetchCompanyPricesJob.perform_later(104)
-      # FetchCompanyPricesJob.perform_later(105)
+      # Resque.queues.each{|q| Resque.redis.del "queue:#{q}" } ---> clears the queue
+      # Company.all.ids.each do |id| ---> Queue jobs to fetch overview, prices, and timeseries
+      #   FetchCompanyOverviewJob.perform_later(id)        
+      # end      
     end
-
   end
 end

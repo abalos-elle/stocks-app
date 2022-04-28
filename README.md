@@ -1,20 +1,26 @@
+[![Contributors](https://img.shields.io/github/contributors/abalos-elle/stocks-app?style=for-the-badge)](https://github.com/abalos-elle/stocks-app/graphs/contributors)
+[![Website](https://img.shields.io/website?down_message=OFFLINE&style=for-the-badge&up_message=ONLINE&url=https%3A%2F%2Favion-stocks-app.herokuapp.com)](https://avion-stocks-app.herokuapp.com)
+![GitHub top language](https://img.shields.io/github/languages/top/abalos-elle/stocks-app?color=red&style=for-the-badge)
+![GitHub followers](https://img.shields.io/github/followers/abalos-elle?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/abalos-elle/stocks-app?style=for-the-badge)
+
 # About the Project
 Stocks app is a backend project containing listings of companies and stock trends from AlphaVantage API, and utilities for you to buy and sell and manage your portfolio.
-[![login-screen.png](https://i.postimg.cc/vHnhd0Q2/login-screen.png)](https://postimg.cc/nCHB4Y9q)
+![login-screen.png](docs/login%20screen.PNG)
 
-[![stock-trends.png](https://i.postimg.cc/CxFq67dq/stock-trends.png)](https://postimg.cc/WhHzdMGN)
+![stock trends.png](docs/stock%20trends.PNG)
 
-[![buy-stocks.png](https://i.postimg.cc/hv2B4Kbg/buy-stocks.png)](https://postimg.cc/7JJcm8WQ)
+![buy-stocks.png](docs/buy%20stocks.PNG)
 
-[![portfolio.png](https://i.postimg.cc/qq55Zqxt/portfolio.png)](https://postimg.cc/Wq08d2Kj)
+![portfolio.png](docs/portfolio.PNG)
 
-[![transactions.png](https://i.postimg.cc/jSzMyZmn/transactions.png)](https://postimg.cc/rDwGkC8q)
+![transactions.png](docs/transactions.PNG)
 
-[![users.png](https://i.postimg.cc/7PjvVtsK/users.png)](https://postimg.cc/Z0PDYHhN)
+![users.png](docs/users.PNG)
 
 ## Built With
 ### Technologies
-* [Ruby on Rails](https://guides.rubyonrails.org/)
+* [Ruby on Rails Version 6.1.4.6](https://guides.rubyonrails.org/v6.1/)
 * [Postgres](www.postgresql.org/)
 * [JavaScript](https://www.javascript.com/)
 ### Third Party Packages
@@ -23,6 +29,7 @@ Stocks app is a backend project containing listings of companies and stock trend
 * [Httparty](https://github.com/jnunemaker/httparty)
 * [AlphaVantageRB gem by StefanoMartin](https://github.com/StefanoMartin/AlphaVantageRB)
 * [Chart.js](https://www.chartjs.org/)
+* [ApexCharts.rb](https://github.com/styd/apexcharts.rb)
 
 
 # Getting Started
