@@ -10,11 +10,13 @@ import "channels"
 import * as bootstrap from 'bootstrap'
 import 'stylesheets/application'
 import Chart from 'chart.js/auto'
+import ApexCharts from 'apexcharts'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 window.bootstrap = bootstrap
+window.ApexCharts = ApexCharts
 
 window.addEventListener('turbolinks:load', () => {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))

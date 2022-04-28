@@ -5,8 +5,35 @@
   <h2><%= @company.ticker  %></h2>
   <h6><%= "10%"  %></h6>
 </div>
+<%
+  require 'date'
 
-<canvas id="myChart" width="200px" height="100px" data-labels="<%= @data_keys %>" data-data="<%= @data_values %>" ></canvas>
+  def candlestick_data
+    @acc = rand(6570..6650)
+    60.times.map {|i| [Date.today - 60 + i, ohlc] }.to_h
+  end
+
+  def ohlc
+    open = @acc + rand(-20..20)
+    high = open + rand(0..100)
+    low = open - rand(0..100)
+    @acc = close = open + rand(-((high-low)/3)..((high-low)/2))
+    [open, high, low, close]
+  end
+
+  candlestick_options = {
+    plot_options: {
+      candlestick: {
+        colors: {
+          upward: '#3C90EB',
+          downward: '#DF7D46'
+        }
+      }
+    }
+  }
+%>
+<%= candlestick_chart(candlestick_data, candlestick_options) %>
+# <canvas id="myChart" width="200px" height="100px" data-labels="<%= @data_keys %>" data-data="<%= @data_values %>" ></canvas>
 
 <div class="flex-container flex2">
   <div>
