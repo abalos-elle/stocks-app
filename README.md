@@ -29,6 +29,7 @@ Stocks app is a backend project containing listings of companies and stock trend
 * [Httparty](https://github.com/jnunemaker/httparty)
 * [AlphaVantageRB gem by StefanoMartin](https://github.com/StefanoMartin/AlphaVantageRB)
 * [Chart.js](https://www.chartjs.org/)
+* [ApexCharts.rb](https://github.com/styd/apexcharts.rb)
 
 
 # Getting Started

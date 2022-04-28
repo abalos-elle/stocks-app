@@ -65,6 +65,7 @@ GEM
     alphavantagerb (1.4.0)
       httparty (>= 0.15.6)
       humanize (>= 1.7.0)
+    apexcharts (0.2.0)
     bcrypt (3.1.17)
     bindex (0.8.1)
     bootsnap (1.11.1)
@@ -311,6 +312,7 @@ PLATFORMS
 
 DEPENDENCIES
   alphavantagerb
+  apexcharts
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
