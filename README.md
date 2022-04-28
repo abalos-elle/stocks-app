@@ -1,3 +1,5 @@
+[![Contributors][contributors-shield]][contributors-url]
+
 # About the Project
 Stocks app is a backend project containing listings of companies and stock trends from AlphaVantage API, and utilities for you to buy and sell and manage your portfolio.
 ![login-screen.png](docs/login%20screen.PNG)
