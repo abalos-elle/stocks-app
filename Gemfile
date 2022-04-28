@@ -74,4 +74,3 @@ gem "haml"
 gem "httparty"
 gem 'ransack'
 gem 'resque'
-gem 'apexcharts'
