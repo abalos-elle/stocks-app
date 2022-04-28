@@ -1,16 +1,16 @@
 # About the Project
 Stocks app is a backend project containing listings of companies and stock trends from AlphaVantage API, and utilities for you to buy and sell and manage your portfolio.
-[![login-screen.png](https://i.postimg.cc/vHnhd0Q2/login-screen.png)](https://postimg.cc/nCHB4Y9q)
+![login-screen.png](docs/login%20screen.PNG)
 
-[![stock-trends.png](https://i.postimg.cc/CxFq67dq/stock-trends.png)](https://postimg.cc/WhHzdMGN)
+![stock trends.png](docs/stock%20trends.PNG)
 
-[![buy-stocks.png](https://i.postimg.cc/hv2B4Kbg/buy-stocks.png)](https://postimg.cc/7JJcm8WQ)
+![buy-stocks.png](docs/buy%20stocks.PNG)
 
-[![portfolio.png](https://i.postimg.cc/qq55Zqxt/portfolio.png)](https://postimg.cc/Wq08d2Kj)
+![portfolio.png](docs/portfolio.PNG)
 
-[![transactions.png](https://i.postimg.cc/jSzMyZmn/transactions.png)](https://postimg.cc/rDwGkC8q)
+![transactions.png](docs/transactions.PNG)
 
-[![users.png](https://i.postimg.cc/7PjvVtsK/users.png)](https://postimg.cc/Z0PDYHhN)
+![users.png](docs/users.PNG)
 
 ## Built With
 ### Technologies
