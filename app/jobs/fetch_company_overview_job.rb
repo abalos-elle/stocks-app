@@ -22,6 +22,7 @@ class FetchCompanyOverviewJob < ApplicationJob
     company.profit_margin = company_details["ProfitMargin"]
 
     company.latest_price = quote["Global Quote"]["05. price"]
+    company.previous_close = quote["Global Quote"]["08. previous close"]
     company.prices = time_series
     company.save!
   end
